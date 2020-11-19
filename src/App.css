@@ -1,7 +1,16 @@
 body, html, #root, .app, .container {
   width: 100%;
   height: 100%;
+
 }
+
+body{
+  background-image: url(./img/bgHR.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .container {
   font-size: 14px;
   display: flex;
@@ -12,6 +21,7 @@ body, html, #root, .app, .container {
 
 .labels {
   font-size: 18px;
+  font-weight: bold;
 }
 .form-group{
   padding-top: 9px;
@@ -32,11 +42,11 @@ body, html, #root, .app, .container {
 .btn {
   text-transform: uppercase;
   outline: 0;
-  min-width: 280px;
+  min-width: 180px;
   background: #111212;
-  width: 100%;
+  width: auto;
   padding: 10px 28px ;
-  color: white;
+  color: rgb(255, 210, 10);
   font-size: 14px;
   border: solid 2px #11151a;
   border-radius: 9px;
@@ -45,11 +55,15 @@ body, html, #root, .app, .container {
   transition-duration: 0.4s;
   margin-bottom: 60px;
   height: 40px;
+  margin-left: 33.2%;
+  margin-top: 30px;
 }
 
 .btn:hover {
-  background-color: white;
+  background-color: rgb(255, 210, 10);
   color: black;
+  font-weight: bold;
+
 }
 
 .alert{
@@ -58,3 +72,65 @@ body, html, #root, .app, .container {
   background: lavenderblush;
 }
 
+.createaccountbg, .loginbg, .registerbg{
+  background: rgb(241, 240, 240, 0.7);
+}
+
+.createaccountdiv, .logindiv, .registerdiv{
+  width: 30%;
+  height: 100vh; /* Magic here */
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.nav {
+  width: 100%;
+  height: 110px;
+  margin: 0 0 0 0;
+  padding: 0;
+  list-style: none;
+  background-color: #070606;
+  border-bottom: 1px solid #ccc; 
+  border-top: 1px solid #ccc; 
+  display: flex;
+}
+
+.navbar-brand{
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+img{
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.ulItem{
+  list-style-type: none;
+  display: flex;
+  margin-left: 1100px;
+  margin-top: 39px;
+  align-items: center;
+}
+
+.nav li a {
+  display: inline;
+  font-size: 22px;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: rgb(250, 250, 250);
+}
+
+.nav li a:hover {
+  color:  rgb(255, 210, 10);
+}
+
+.nav li a:focus {
+  color:  rgb(255, 210, 10);
+  font-weight: bold;
+}

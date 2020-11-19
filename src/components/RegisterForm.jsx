@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Joi from 'joi-browser'
 import Form from "../common/form";
 
@@ -35,21 +35,24 @@ class RegisterForm extends Form {
     doSubmit = () => {
         //Call the server
         console.log('Submitted');
+        this.props.history.replace("/")
     }
 
     render() {
         return (
-            <div>
-                <h1 align={"center"}>Register your Company</h1>
-                <h2 align={"center"}>SIGN UP</h2>
-                <form onSubmit={this.handleSubmit} >
-                    {this.renderInput('companyName', "Company name: ","text","Enter your company name")}
-                    {this.renderInput('address', "Address: ","text","Enter address company")}
-                    {this.renderInput('username', "Username: ","text","Enter username")}
-                    {this.renderInput('password', "Password: ","password", "Enter password")}
-                    {this.renderInput('confirm', "Confirm password: ","password", "Confirm password")}
-                    {this.renderButton("Register")}
-                </form>
+            <div className="registerbg">
+                <div className="registerdiv">
+                    <h1 align={"center"}>Register your Company</h1>
+                    <h2 align={"center"}>SIGN UP</h2>
+                    <form onSubmit={this.handleSubmit} >
+                        {this.renderInput('companyName', "Company name: ","text","Enter your company name")}
+                        {this.renderInput('address', "Address: ","text","Enter address company")}
+                        {this.renderInput('username', "Username: ","text","Enter username")}
+                        {this.renderInput('password', "Password: ","password", "Enter password")}
+                        {this.renderInput('confirm', "Confirm password: ","password", "Confirm password")}
+                        {this.renderButton("Register")}
+                    </form>
+                </div>
             </div>
         )
     }
