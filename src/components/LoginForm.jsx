@@ -20,10 +20,38 @@ class LoginForm extends Form {
           .label('Password')
     };
 
-    doSubmit = () => {
-        //Call the server
+    doLogin = () => {
+        const payload = {
+            username: this.state.account.username,
+            password: this.state.account.password
+        }
+        fetch('http://localhost:8080/hr/login', {
+            method: 'POST',
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    this.props.history.replace("/")
+                    alert("Bine ati venit, rau ati nimerit! ")
+                }
+                else if (res.status === 404) {
+                    alert("Popa prostu nu a fost gasit")
+                    this.setState({
+                        account : {username: "", password: ""}
+                    })
+                }
+                else if (res.status === 401) {
+                    alert("Popa prostu si-a uitat parola")
+                    this.setState({
+                        account : {username: "", password: ""}
+                    })
+                }
+            })
         console.log('Submitted');
-        this.props.history.replace("/")
     }
 
     render() {
