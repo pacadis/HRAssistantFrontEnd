@@ -28,7 +28,7 @@ class RegisterForm extends Form {
         confirm: Joi
             .string()
             .required()
-            .label("Confirm")
+            .label("Confirm Password")
 
     };
 
