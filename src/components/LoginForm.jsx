@@ -20,7 +20,7 @@ class LoginForm extends Form {
           .label('Password')
     };
 
-    doLogin = () => {
+    doSubmit = () => {
         const payload = {
             username: this.state.account.username,
             password: this.state.account.password
@@ -36,16 +36,16 @@ class LoginForm extends Form {
             .then(res => {
                 if (res.status === 200) {
                     this.props.history.replace("/")
-                    alert("Bine ati venit, rau ati nimerit! ")
+                    alert("Welcome to our page! ")
                 }
                 else if (res.status === 404) {
-                    alert("Popa prostu nu a fost gasit")
+                    alert("Username doesn't exist!")
                     this.setState({
                         account : {username: "", password: ""}
                     })
                 }
                 else if (res.status === 401) {
-                    alert("Popa prostu si-a uitat parola")
+                    alert("Password is wrong!")
                     this.setState({
                         account : {username: "", password: ""}
                     })
