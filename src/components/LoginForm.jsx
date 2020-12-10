@@ -21,9 +21,37 @@ class LoginForm extends Form {
     };
 
     doSubmit = () => {
-        //Call the server
+        const payload = {
+            username: this.state.account.username,
+            password: this.state.account.password
+        }
+        fetch('http://localhost:8080/hr/login', {
+            method: 'POST',
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    this.props.history.replace("/")
+                    alert("Welcome to our page! ")
+                }
+                else if (res.status === 404) {
+                    alert("Username doesn't exist!")
+                    this.setState({
+                        account : {username: "", password: ""}
+                    })
+                }
+                else if (res.status === 401) {
+                    alert("Password is wrong!")
+                    this.setState({
+                        account : {username: "", password: ""}
+                    })
+                }
+            })
         console.log('Submitted');
-        this.props.history.replace("/")
     }
 
     render() {
@@ -32,7 +60,7 @@ class LoginForm extends Form {
                 <div className="logindiv">  
                     <h1 align={"center"}>Login</h1>
                     <form onSubmit={this.handleSubmit}>
-                        {this.renderInput('username', "Username","text","Username")}
+                        {this.renderInput('username', "Username: ","text","Username")}
                         {this.renderInput('password', "Password: ","password", "Password")}
                         {this.renderButton("Login")}
                     </form>
