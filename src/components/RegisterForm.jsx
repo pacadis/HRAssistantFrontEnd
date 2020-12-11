@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser'
-import Form from "../common/form";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
-class RegisterForm extends Form {
+class RegisterForm extends React.Component {
     state = {
         account: {companyName: "",address: "",username: "", password: "",confirm: ""},
         errors: {}
@@ -40,19 +41,39 @@ class RegisterForm extends Form {
 
     render() {
         return (
-            <div className="registerbg">
-                <div className="registerdiv">
-                    <h1 align={"center"}>Register your Company</h1>
-                    <h2 align={"center"}>SIGN UP</h2>
-                    <form onSubmit={this.handleSubmit} >
-                        {this.renderInput('companyName', "Company name: ","text","Enter your company name")}
-                        {this.renderInput('address', "Address: ","text","Enter address company")}
-                        {this.renderInput('username', "Username: ","text","Enter username")}
-                        {this.renderInput('password', "Password: ","password", "Enter password")}
-                        {this.renderInput('confirm', "Confirm password: ","password", "Confirm password")}
-                        {this.renderButton("Register")}
-                    </form>
-                </div>
+            <div className="d-flex justify-content-center align-items-center loginbg" style={{height:"100vh"}}>
+                <Form className="d-flex flex-column borderedform border rounded border-secondary" style={{width:"40%"}}>
+                    <h2 className="align-self-center">Register your company</h2>
+                    <h1 className="align-self-center">SIGN UP</h1>
+                    <hr />
+                        <Form.Group controlId="formCompanyName">
+                        <Form.Label className="labels">Company name</Form.Label>
+                        <Form.Control className="align-self-center" type="text" placeholder="Company name"/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formAddress">
+                        <Form.Label className="labels">Address</Form.Label>
+                        <Form.Control className="align-self-center" type="text" placeholder="Address"/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formUser">
+                        <Form.Label className="labels">Username</Form.Label>
+                        <Form.Control className="align-self-center" type="text" placeholder="Username"/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formPassword">
+                        <Form.Label className="labels">Password</Form.Label>
+                        <Form.Control className="align-self-center" type="password" placeholder="Password"/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formConfirmPassword">
+                        <Form.Label className="labels">Address</Form.Label>
+                        <Form.Control className="align-self-center" type="password" placeholder="Confirm password"/>
+                        </Form.Group>
+                        <Button className="align-self-center mybtn">
+                        SUBMIT
+                        </Button>
+                </Form>
             </div>
         )
     }

@@ -53,7 +53,7 @@ class Form extends Component{
 
     renderButton(label) {
         return (
-            <button className="btn"> {label}
+            <button className="mybtn"> {label}
             </button>
     );
     }

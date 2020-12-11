@@ -1,8 +1,10 @@
 import React from 'react';
 import Joi from 'joi-browser'
-import Form from "../common/form";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
-class CreateAccountForm extends Form {
+
+class CreateAccountForm extends React.Component {
     state = {
         account: {firstName: "",lastName: "",username: "", password: ""},
         errors: {}
@@ -35,18 +37,33 @@ class CreateAccountForm extends Form {
 
     render() {
         return (
-            <div className="createaccountbg">
-                <div className="createaccountdiv">
-                    <h1 align={"center"}>Create employee account</h1>
-                    <h2 align={"center"}>SIGN UP</h2>
-                    <form onSubmit={this.handleSubmit} >
-                        {this.renderInput('firstName', "First Name: ","text","Enter first name")}
-                        {this.renderInput('lastName', "Last Name: ","text","Enter last name")}
-                        {this.renderInput('username', "Username: ","text","Enter username")}
-                        {this.renderInput('password', "Password: ","password", "Enter password")}
-                        {this.renderButton("CREATE")}
-                    </form>
-                </div>
+            <div className="d-flex justify-content-center align-items-center loginbg" style={{height:"100vh"}}>
+                <Form className="d-flex flex-column borderedform border rounded border-secondary" style={{width:"40%"}}>
+                    <h2 className="align-self-center">Create employee account</h2>
+                    <hr />
+                        <Form.Group controlId="formFirstName">
+                        <Form.Label className="labels">First name</Form.Label>
+                        <Form.Control className="align-self-center" type="text" placeholder="First name"/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formLastName">
+                        <Form.Label className="labels">Last name</Form.Label>
+                        <Form.Control className="align-self-center" type="text" placeholder="Last name"/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formUser">
+                        <Form.Label className="labels">Username</Form.Label>
+                        <Form.Control className="align-self-center" type="text" placeholder="Username"/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formPassword">
+                        <Form.Label className="labels">Password</Form.Label>
+                        <Form.Control className="align-self-center" type="password" placeholder="Password"/>
+                        </Form.Group>
+                        <Button className="align-self-center mybtn">
+                        SUBMIT
+                        </Button>
+                </Form>
             </div>
         )
     }
