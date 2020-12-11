@@ -1,29 +1,34 @@
-import React, { Component } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { render } from "@testing-library/react";
 import Joi from 'joi-browser'
 
 class LoginForm extends React.Component {
-    state = {
-        account: {username: "", password: ""},
-        errors: {}
-    };
 
-    schema = {
-      username: Joi.string()
-          .required()
-          .label('Username'),
-      password: Joi
-          .string()
-          .required()
-          .label('Password')
-    };
+    constructor() {
+        super();
+        this.state = {
+            username: "",
+            password: "",
+            errors: {}
+        };
+        this.schema = {
+            username: Joi.string()
+                .required()
+                .label('Username'),
+            password: Joi
+                .string()
+                .required()
+                .label('Password')
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.doSubmit = this.doSubmit.bind(this);
+    }
 
     doSubmit = () => {
         const payload = {
-            username: this.state.account.username,
-            password: this.state.account.password
+            username: this.state.username,
+            password: this.state.password
         }
         fetch('http://localhost:8080/hr/login', {
             method: 'POST',
@@ -40,37 +45,41 @@ class LoginForm extends React.Component {
                 }
                 else if (res.status === 404) {
                     alert("Username doesn't exist!")
-                    this.setState({
-                        account : {username: "", password: ""}
-                    })
                 }
                 else if (res.status === 401) {
                     alert("Password is wrong!")
-                    this.setState({
-                        account : {username: "", password: ""}
-                    })
                 }
             })
         console.log('Submitted');
     }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    };
+
+
     render() {
+        console.log("render")
         return (
             <div className="d-flex justify-content-center align-items-center loginbg" style={{height:"100vh"}}>
                 <Form className="d-flex flex-column borderedform border rounded border-secondary" style={{width:"40%"}}>
                     <h2 className="align-self-center">Login</h2>
-                    <hr />
-                        <Form.Group controlId="formUser">
+                    <hr/>
+                    <Form.Group controlId="formUser">
                         <Form.Label className="labels">Username</Form.Label>
-                        <Form.Control className="align-self-center" type="text" placeholder="Username"/>
-                        </Form.Group>
+                        <Form.Control className="align-self-center" name="username" type="text" placeholder="Username" onChange={this.handleChange}>
+                        </Form.Control>
+                    </Form.Group>
 
-                        <Form.Group controlId="formPassword">
+                    <Form.Group controlId="formPassword">
                         <Form.Label className="labels">Password</Form.Label>
-                        <Form.Control className="align-self-center" type="password" placeholder="Password"/>
-                        </Form.Group>
-                        <Button className="align-self-center mybtn">
+                        <Form.Control className="align-self-center" name="password" type="password" placeholder="Password" onChange={this.handleChange}/>
+                    </Form.Group>
+                    <Button className="align-self-center mybtn" onClick={this.doSubmit}>
                         SUBMIT
-                        </Button>
+                    </Button>
                 </Form>
             </div>
         )
