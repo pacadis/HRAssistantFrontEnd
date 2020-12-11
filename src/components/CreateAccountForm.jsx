@@ -31,7 +31,32 @@ class CreateAccountForm extends React.Component {
     };
 
     doSubmit = () => {
-        //Call the server
+        const payload = {
+            firstName: this.state.account.firstName,
+            lastName: this.state.account.lastName,
+            username: this.state.account.username,
+            password: this.state.account.password
+        }
+        fetch('http://localhost:8080/hr/create', {
+            method: 'POST',
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    this.props.history.replace("/")
+                    alert("Welcome to our page! ")
+                }
+                else if (res.status === 401) {
+                    alert("Username already exist!")
+                    this.setState({
+                        account : {firstName: "", lastName: "", username: "", password: ""}
+                    })
+                }
+            })
         console.log('Submitted');
     }
 

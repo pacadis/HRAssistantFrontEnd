@@ -8,6 +8,9 @@ import CreateAccountForm from './components/CreateAccountForm';
 import NotFound from './components/NotFound';
 import NavBar from './components/navbar';
 
+import CompanyDashboard from './components/CompanyDashboard';
+
+
 class App extends Component{
     render() {
       return (
@@ -18,6 +21,9 @@ class App extends Component{
                 <Route path="/login" component={LoginForm}/>
                 <Route path="/register" component={RegisterForm}/>
                 <Route path="/createaccount" component={CreateAccountForm}/>
+
+                <Route path="/companydashboard" component={CompanyDashboard}/>
+
                 <Route path="/not-found" component={NotFound} />
                 <Route path="/" exact component={HomePage} />
                 <Redirect to="/not-found" />

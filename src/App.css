@@ -60,9 +60,14 @@ body{
   font-weight: bold;
 }
 
+.mybtnnavbar{
+  font-size: 20px;
+}
+
 .mybtnnavbar:hover {
   color: rgb(255, 210, 10) !important;
   font-weight: bold;
+  font-size: 20px;
 }
 
 .alert{

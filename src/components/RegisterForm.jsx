@@ -34,9 +34,34 @@ class RegisterForm extends React.Component {
     };
 
     doSubmit = () => {
-        //Call the server
+        const payload = {
+            name: this.state.account.name,
+            address: this.state.account.address,
+            username: this.state.account.username,
+            password: this.state.account.password,
+            description: this.state.account.description
+        }
+        fetch('http://localhost:8080/hr/register', {
+            method: 'POST',
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    this.props.history.replace("/login")
+                    alert("Welcome to our page! ")
+                }
+                else if (res.status === 401) {
+                    alert("Username already exist!")
+                    this.setState({
+                        account : {name: "", address: "", username: "", password: "", confirm: "", description: ""}
+                    })
+                }
+            })
         console.log('Submitted');
-        this.props.history.replace("/")
     }
 
     render() {
