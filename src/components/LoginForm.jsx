@@ -63,8 +63,8 @@ class LoginForm extends React.Component {
     render() {
         console.log("render")
         return (
-            <div className="d-flex justify-content-center align-items-center loginbg" style={{height:"100vh"}}>
-                <Form className="d-flex flex-column borderedform border rounded border-secondary" style={{width:"40%"}}>
+            <div className="d-flex justify-content-center align-items-center" style={{height:"100vh", marginTop:"100px"}}>
+                <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>
                     <h2 className="align-self-center">Login</h2>
                     <hr/>
                     <Form.Group controlId="formUser">

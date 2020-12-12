@@ -62,8 +62,8 @@ class CreateAccountForm extends React.Component {
 
     render() {
         return (
-            <div className="d-flex justify-content-center align-items-center loginbg" style={{height:"100vh"}}>
-                <Form className="d-flex flex-column borderedform border rounded border-secondary" style={{width:"40%"}}>
+            <div className="d-flex justify-content-center align-items-center" style={{height:"115vh", marginTop:"100px"}}>
+                <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%", marginTop:"100px"}}>
                     <h2 className="align-self-center">Create employee account</h2>
                     <hr />
                         <Form.Group controlId="formFirstName">

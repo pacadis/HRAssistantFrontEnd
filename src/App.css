@@ -7,6 +7,7 @@ body, html, #root, .app, .container {
 body{
   background-image: url(./img/bgHR.png);
   background-position: center;
+  background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -62,6 +63,11 @@ body{
 
 .mybtnnavbar{
   font-size: 20px;
+  transition: 0.5s;
+}
+
+.smaller .mybtnnavbar{
+  font-size: 16px;
 }
 
 .mybtnnavbar:hover {
@@ -76,19 +82,33 @@ body{
   background: lavenderblush;
 }
 
-.createaccountbg, .loginbg, .registerbg{
-  background: rgb(241, 240, 240, 0.7);
-}
-
-.createaccountdiv, .logindiv, .registerdiv{
-  width: 30%;
-  height: 100vh; 
-  margin-left: auto;
-  margin-right: auto;
-
+.custom-container{
+  min-width: 300px;
 }
 
 .borderedform {
-  background: rgba(235, 232, 232, 0.7) !important;
+  background: rgba(235, 232, 232, 0.9) !important;
   padding: 40px;
+}
+
+#navigation {
+  transition: 0.5s;
+  position: fixed;
+  width: 100%;
+}
+
+#logo img {
+  max-height: 100px;
+  transition: all 0.4s;
+}
+
+.smaller {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.smaller #logo img{
+  max-height: 50px;
+  width: auto;
 }

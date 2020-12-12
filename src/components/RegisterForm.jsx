@@ -66,9 +66,9 @@ class RegisterForm extends React.Component {
 
     render() {
         return (
-            <div className="d-flex justify-content-center align-items-center loginbg" style={{height:"100vh"}}>
-                <Form className="d-flex flex-column borderedform border rounded border-secondary" style={{width:"40%"}}>
-                    <h2 className="align-self-center">Register your company</h2>
+            <div className="d-flex justify-content-center align-items-center" style={{height:"123vh", marginTop:"210px"}}>
+                <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>
+                    <h2 className="align-self-center" style={{textAlign:"center"}}>Register your company</h2>
                     <h1 className="align-self-center">SIGN UP</h1>
                     <hr />
                         <Form.Group controlId="formCompanyName">
