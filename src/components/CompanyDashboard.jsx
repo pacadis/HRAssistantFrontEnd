@@ -22,7 +22,7 @@ class DashBoard extends React.Component {
 
     logout(){
         localStorage.clear();
-        this.props.history.replace('/');
+        this.props.history.replace('/login');
     }
     
     render(){
