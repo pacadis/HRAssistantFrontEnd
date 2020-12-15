@@ -116,3 +116,9 @@ body{
   max-height: 50px;
   width: auto;
 }
+
+.button-logout{
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+}

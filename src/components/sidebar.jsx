@@ -42,10 +42,12 @@ export default class SideBar extends React.Component {
                     Statistici angajati
             </Item>
 
-            <Item bgColor='black' onClick={() => this.props.show("logout")}>
-                <FontAwesomeIcon icon={faSignOutAlt} style={{marginRight: "1rem"}}/>
-                    Logout
-            </Item>
+           <div className="button-logout">
+               <Item verticalAlign="bottom" bgColor='black' onClick={() => this.props.show("logout")}>
+               <FontAwesomeIcon icon={faSignOutAlt} style={{marginRight: "1rem"}}/>
+               Logout
+               </Item>
+           </div>
 
             </Sidebar>
       )
