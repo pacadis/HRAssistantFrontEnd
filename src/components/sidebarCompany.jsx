@@ -5,10 +5,17 @@ import 'react-sidebar-ui/dist/index.css';
 import {Link, BrowserRouter as Router , Route, Switch} from "react-router-dom";
 import sigla from "../img/sigla.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard, faPaperPlane, faUserPlus, faChartBar, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import {
+    faAddressCard,
+    faPaperPlane,
+    faUserPlus,
+    faChartBar,
+    faSignOutAlt,
+    faIdBadge
+} from '@fortawesome/free-solid-svg-icons'
 
 
-export default class SideBar extends React.Component {
+export default class SidebarCompany extends React.Component {
 
     render() {
 
@@ -22,9 +29,14 @@ export default class SideBar extends React.Component {
             </Link>
 
             <LogoText>Dashboard</LogoText>
-            <Item bgColor='black' onClick={() => this.props.show("vizualizare_angajati")}>
+            <Item bgColor='black' onClick={() => this.props.show("gestionare_angajati")}>
+                <FontAwesomeIcon icon={faIdBadge} style={{marginRight: "1rem"}}/>
+                Gestionare conturi
+            </Item>
+
+            <Item bgColor='black' onClick={() => this.props.show("vizualizare_contracte")}>
                 <FontAwesomeIcon icon={faAddressCard} style={{marginRight: "1rem"}}/>
-                Vizualizare angajati
+                Vizualizare contracte
             </Item>
 
             <Item bgColor='black' onClick={() => this.props.show("vizualizare_cereri")}>
@@ -34,12 +46,12 @@ export default class SideBar extends React.Component {
 
             <Item bgColor='black' onClick={() => this.props.show("creare_cont")}>
                 <FontAwesomeIcon icon={faUserPlus} style={{marginRight: "1rem"}}/>
-                    Creeaza cont angajat
+                    Creează cont
             </Item>
 
             <Item bgColor='black' onClick={() => this.props.show("statistici")}>
                 <FontAwesomeIcon icon={faChartBar} style={{marginRight: "1rem"}}/>
-                    Statistici angajati
+                    Statistici angajați
             </Item>
 
            <div className="button-logout">

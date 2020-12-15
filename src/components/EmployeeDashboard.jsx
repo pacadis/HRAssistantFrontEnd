@@ -1,11 +1,11 @@
 import React from "react";
 import {Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { withRouter } from "react-router";
-import SidebarCompany from "./sidebarCompany.jsx";
+import SidebarEmployee from "./sidebarEmployee";
 import CreateAccountForm from "./CreateAccountForm"
 
-class CompanyDashboard extends React.Component {
-    
+class EmployeeDashboard extends React.Component {
+
     constructor(props){
         super(props);
         this.show = this.show.bind(this);
@@ -14,7 +14,6 @@ class CompanyDashboard extends React.Component {
 
     show(type){
         switch(type){
-            case "creare_cont": this.setState({render: <CreateAccountForm/>}); break;
             case "logout": this.logout(); break;
             default: this.setState({render: null})
         }
@@ -24,25 +23,25 @@ class CompanyDashboard extends React.Component {
         localStorage.clear();
         this.props.history.replace('/login');
     }
-    
+
     render(){
         return (
             <div className="background-dashboard">
-            <Container fluid>
+                <Container fluid>
                     <Row>
-                        <Col xs={2} id="sidebar-wrapper">      
-                            <SidebarCompany show={this.show}/>
+                        <Col xs={2} id="sidebar-wrapper">
+                            <SidebarEmployee show={this.show}/>
                         </Col>
                         <Col xs={10} id="page-content-wrapper">
                             { this.state.render }
-                        </Col> 
+                        </Col>
                     </Row>
 
                 </Container>
             </div>
-            );
+        );
     }
-  };
+};
 
-  const Dashboard = withRouter(CompanyDashboard);
-  export default Dashboard
+const Dashboard = withRouter(EmployeeDashboard);
+export default Dashboard

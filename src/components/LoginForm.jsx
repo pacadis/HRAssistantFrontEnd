@@ -47,8 +47,8 @@ class LoginForm extends React.Component {
                         const { result } = json
                         if (result == "company")
                             this.props.history.push("/companydashboard");
-                        else
-                            this.props.history.replace("/")
+                        if (result == "employee")
+                            this.props.history.replace("/employeedashboard")
 
                     });
 
@@ -74,7 +74,7 @@ class LoginForm extends React.Component {
     render() {
         console.log("render")
         return (
-            <div>
+            <div className="background-general">
             <NavBar/>
             <div className="d-flex justify-content-center align-items-center" style={{height:"100vh", marginTop:"100px"}}>
                 <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>

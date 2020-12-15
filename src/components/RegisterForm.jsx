@@ -67,7 +67,7 @@ class RegisterForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="background-general">
             <NavBar/>
             <div className="d-flex justify-content-center align-items-center" style={{height:"123vh", marginTop:"210px"}}>
                 <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>

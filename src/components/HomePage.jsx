@@ -3,10 +3,10 @@ import NavBar from './navbar';
 
 const HomePage = () => {
   return (
-    <div>
+    <body className="background-general">
       <NavBar/>
       <h1>Acasa</h1>
-    </div>
+    </body>
   );
 };
 

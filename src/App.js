@@ -7,6 +7,7 @@ import RegisterForm from './components/RegisterForm';
 import NotFound from './components/NotFound';
 
 import CompanyDashboard from './components/CompanyDashboard';
+import EmployeeDashboard from "./components/EmployeeDashboard";
 
 
 class App extends Component{
@@ -19,6 +20,7 @@ class App extends Component{
                 <Route path="/register" component={RegisterForm}/>
 
                 <Route path="/companydashboard" component={CompanyDashboard}/>
+                <Route path="/employeedashboard" component={EmployeeDashboard}/>
 
                 <Route path="/not-found" component={NotFound} />
                 <Route path="/" exact component={HomePage} />
