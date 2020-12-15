@@ -28,7 +28,7 @@ export default class SidebarCompany extends React.Component {
                 imageName='react logo'/>
             </Link>
 
-            <LogoText>Dashboard</LogoText>
+            <LogoText>{localStorage.getItem('name')}</LogoText>
             <Item bgColor='black' onClick={() => this.props.show("gestionare_angajati")}>
                 <FontAwesomeIcon icon={faIdBadge} style={{marginRight: "1rem"}}/>
                 Gestionare conturi

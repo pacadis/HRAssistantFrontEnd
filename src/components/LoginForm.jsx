@@ -41,10 +41,11 @@ class LoginForm extends React.Component {
         })
             .then(res => {
                 if (res.status === 200) {
-                    
+
                     localStorage.setItem('username', this.state.username)
                     res.json().then(json =>{
-                        const { result } = json
+                        const { result, name } = json
+                        localStorage.setItem('name', name)
                         if (result == "company")
                             this.props.history.push("/companydashboard");
                         if (result == "employee")
