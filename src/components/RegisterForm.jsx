@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Joi from 'joi-browser'
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import NavBar from './navbar';
 
 class RegisterForm extends React.Component {
     state = {
@@ -66,6 +67,8 @@ class RegisterForm extends React.Component {
 
     render() {
         return (
+            <div>
+            <NavBar/>
             <div className="d-flex justify-content-center align-items-center" style={{height:"123vh", marginTop:"210px"}}>
                 <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>
                     <h2 className="align-self-center" style={{textAlign:"center"}}>Register your company</h2>
@@ -99,6 +102,7 @@ class RegisterForm extends React.Component {
                         SUBMIT
                         </Button>
                 </Form>
+            </div>
             </div>
         )
     }

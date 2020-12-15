@@ -5,39 +5,57 @@ import Button from "react-bootstrap/Button";
 
 
 class CreateAccountForm extends React.Component {
-    state = {
-        account: {firstName: "",lastName: "",username: "", password: ""},
-        errors: {}
-    };
+    constructor(){
+        super()
+        this.state = {
+            firstName: "", 
+            lastName: "", 
+            cnp: "", 
+            username: "", 
+            password: ""
+        };
 
-    schema = {
-        firstName: Joi
-            .string()
-            .required()
-            .label("First Name"),
-        lastName: Joi
-            .string()
-            .required()
-            .label("Last Name"),
-        username: Joi
-            .string()
-            .required()
-            .label("Email"),
-        password: Joi
-            .string()
-            .required()
-            .label("Password"),
+        this.schema = {
+            firstName: Joi
+                .string()
+                .required()
+                .label("First Name"),
+            lastName: Joi
+                .string()
+                .required()
+                .label("Last Name"),
+            username: Joi
+                .string()
+                .required()
+                .label("Email"),
+            password: Joi
+                .string()
+                .required()
+                .label("Password"),
+            cnp: Joi
+                .string()
+                .required()
+                .label("CNP")
+    
+        };
 
-    };
+        this.handleChange = this.handleChange.bind(this);
+        this.doSubmit = this.doSubmit.bind(this);
+    }
 
     doSubmit = () => {
         const payload = {
-            firstName: this.state.account.firstName,
-            lastName: this.state.account.lastName,
-            username: this.state.account.username,
-            password: this.state.account.password
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            cnp: this.state.cnp,
+            company: localStorage.getItem('username'),
+            username: this.state.username,
+            password: this.state.password
         }
-        fetch('http://localhost:8080/hr/create', {
+        
+        console.log(payload.company)
+
+        fetch('http://localhost:8080/hr/employee', {
             method: 'POST',
             headers: {
                 'Accept' : 'application/json',
@@ -47,18 +65,38 @@ class CreateAccountForm extends React.Component {
         })
             .then(res => {
                 if (res.status === 200) {
-                    this.props.history.replace("/")
-                    alert("Welcome to our page! ")
+                    alert("Account created!")
+                    this.setState({
+                        firstName: "", 
+                        lastName: "", 
+                        cnp: "", 
+                        username: "", 
+                        password: ""
+                    })
                 }
                 else if (res.status === 401) {
                     alert("Username already exist!")
                     this.setState({
-                        account : {firstName: "", lastName: "", username: "", password: ""}
+                        firstName: "", 
+                        lastName: "", 
+                        cnp: "", 
+                        username: "", 
+                        password: ""
                     })
+                }
+                else if(res.status === 418){
+                    alert("Invalid CNP!")
                 }
             })
         console.log('Submitted');
     }
+
+    handleChange(event) {
+        console.log(this.state)
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    };
 
     render() {
         return (
@@ -68,25 +106,30 @@ class CreateAccountForm extends React.Component {
                     <hr />
                         <Form.Group controlId="formFirstName">
                         <Form.Label className="labels">First name</Form.Label>
-                        <Form.Control className="align-self-center" type="text" placeholder="First name"/>
+                        <Form.Control name="firstName" className="align-self-center" type="text" placeholder="First name" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formLastName">
                         <Form.Label className="labels">Last name</Form.Label>
-                        <Form.Control className="align-self-center" type="text" placeholder="Last name"/>
+                        <Form.Control name="lastName" className="align-self-center" type="text" placeholder="Last name" onChange={this.handleChange}/>
+                        </Form.Group>
+
+                        <Form.Group controlId="cnp">
+                        <Form.Label className="labels">Cod Numeric Personal</Form.Label>
+                        <Form.Control name="cnp" className="align-self-center" type="text" placeholder="CNP" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formUser">
                         <Form.Label className="labels">Username</Form.Label>
-                        <Form.Control className="align-self-center" type="text" placeholder="Username"/>
+                        <Form.Control name="username" className="align-self-center" type="text" placeholder="Username" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formPassword">
                         <Form.Label className="labels">Password</Form.Label>
-                        <Form.Control className="align-self-center" type="password" placeholder="Password"/>
+                        <Form.Control name="password" className="align-self-center" type="password" placeholder="Password" onChange={this.handleChange}/>
                         </Form.Group>
-                        <Button className="align-self-center mybtn">
-                        SUBMIT
+                        <Button className="align-self-center mybtn" onClick={this.doSubmit}>
+                            SUBMIT
                         </Button>
                 </Form>
             </div>

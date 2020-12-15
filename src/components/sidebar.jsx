@@ -1,37 +1,53 @@
-import React from "react";
-import {Nav} from "react-bootstrap";
-import { withRouter } from "react-router";
-// import '../pages/style/Dashboard.css'
+import React from 'react';
 
-const Side = props => {
-   
+import {Sidebar, DropdownItem, Icon, Item, Logo, LogoText} from 'react-sidebar-ui'
+import 'react-sidebar-ui/dist/index.css';
+import {Link, BrowserRouter as Router , Route, Switch} from "react-router-dom";
+import sigla from "../img/sigla.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard, faPaperPlane, faUserPlus, faChartBar, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 
-    return (
-        <>
-    
-            <Nav className="col-md-12 d-none d-md-block bg-light sidebar"
-            activeKey="/home"
-            onSelect={selectedKey => alert(`selected ${selectedKey}`)}
-            >
-                <div className="sidebar-sticky"></div>
-            <Nav.Item>
-                <Nav.Link href="/home">Active</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link eventKey="link-1">Link</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link eventKey="link-2">Link</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-                <Nav.Link eventKey="disabled" disabled>
-                Disabled
-                </Nav.Link>
-            </Nav.Item>
-            </Nav>
-          
-        </>
-        );
-  };
-  const Sidebar = withRouter(Side);
-  export default Sidebar
+
+export default class SideBar extends React.Component {
+
+    render() {
+
+      return (
+            <Sidebar bgColor='black' isCollapsed={false}>
+
+            <Link to="/">
+                <Logo
+                image={sigla}
+                imageName='react logo'/>
+            </Link>
+
+            <LogoText>Dashboard</LogoText>
+            <Item bgColor='black' onClick={() => this.props.show("vizualizare_angajati")}>
+                <FontAwesomeIcon icon={faAddressCard} style={{marginRight: "1rem"}}/>
+                Vizualizare angajati
+            </Item>
+
+            <Item bgColor='black' onClick={() => this.props.show("vizualizare_cereri")}>
+                <FontAwesomeIcon icon={faPaperPlane} style={{marginRight: "1rem"}}/>
+                Vizualizare cereri
+            </Item>
+
+            <Item bgColor='black' onClick={() => this.props.show("creare_cont")}>
+                <FontAwesomeIcon icon={faUserPlus} style={{marginRight: "1rem"}}/>
+                    Creeaza cont angajat
+            </Item>
+
+            <Item bgColor='black' onClick={() => this.props.show("statistici")}>
+                <FontAwesomeIcon icon={faChartBar} style={{marginRight: "1rem"}}/>
+                    Statistici angajati
+            </Item>
+
+            <Item bgColor='black' onClick={() => this.props.show("logout")}>
+                <FontAwesomeIcon icon={faSignOutAlt} style={{marginRight: "1rem"}}/>
+                    Logout
+            </Item>
+
+            </Sidebar>
+      )
+    };
+}

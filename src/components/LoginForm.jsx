@@ -2,6 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Joi from 'joi-browser'
+import NavBar from './navbar';
 
 class LoginForm extends React.Component {
 
@@ -40,8 +41,18 @@ class LoginForm extends React.Component {
         })
             .then(res => {
                 if (res.status === 200) {
-                    this.props.history.replace("/")
-                    alert("Welcome to our page! ")
+                    
+                    localStorage.setItem('username', this.state.username)
+                    res.json().then(json =>{
+                        const { result } = json
+                        if (result == "company")
+                            this.props.history.push("/companydashboard");
+                        else
+                            this.props.history.replace("/")
+
+                    });
+
+                    // LOGIN PERSISTANCE
                 }
                 else if (res.status === 404) {
                     alert("Username doesn't exist!")
@@ -63,6 +74,8 @@ class LoginForm extends React.Component {
     render() {
         console.log("render")
         return (
+            <div>
+            <NavBar/>
             <div className="d-flex justify-content-center align-items-center" style={{height:"100vh", marginTop:"100px"}}>
                 <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>
                     <h2 className="align-self-center">Login</h2>
@@ -81,6 +94,7 @@ class LoginForm extends React.Component {
                         SUBMIT
                     </Button>
                 </Form>
+            </div>
             </div>
         )
     }

@@ -4,9 +4,6 @@
 // import { Nav, Navbar, Form, Button, FormControl} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import React from 'react'
-import {
-    BrowserRouter as Router,
-  } from "react-router-dom";
 import { Navbar,Nav } from 'react-bootstrap'
 import sigla from "../img/sigla.png";
 
@@ -28,24 +25,19 @@ class BootstrapNavbar extends React.Component{
 
     render(){
         return(
-            <Router>
-                <Navbar id="navigation" bg="dark" variant="dark" expand="md" sticky="top">
-                    <Navbar.Brand id="logo" className="navbar-brand" href="/">
-                        <img src={sigla} style={{marginTop: -7}} />
-                    </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-                     <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="ml-auto">
-                        <Nav.Link href="/" className="mybtnnavbar">Home</Nav.Link>
-                        <Nav.Link href="/register" className="mybtnnavbar">Register</Nav.Link>
-                        <Nav.Link href="/login" className="mybtnnavbar">Login</Nav.Link>
-                        <Nav.Link href="/createaccount" className="mybtnnavbar">Create Account</Nav.Link>
-
-                        <Nav.Link href="/companydashboard" className="mybtnnavbar">CompanyDashboard</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
-            </Router>
+             <Navbar id="navigation" bg="dark" variant="dark" expand="sm" sticky="top">
+                <Navbar.Brand id="logo" className="navbar-brand" href="/">
+                     <img src={sigla} style={{marginTop: -7}} />
+                 </Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="ml-auto">
+                    <Nav.Link href="/" className="mybtnnavbar">Home</Nav.Link>
+                    <Nav.Link href="/register" className="mybtnnavbar">Register</Nav.Link>
+                     <Nav.Link href="/login" className="mybtnnavbar">Login</Nav.Link>
+                     </Nav>
+                 </Navbar.Collapse>
+            </Navbar>
         )  
     }
 }

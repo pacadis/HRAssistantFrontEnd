@@ -4,9 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import LoginForm from "./components/LoginForm";
 import HomePage from './components/HomePage';
 import RegisterForm from './components/RegisterForm';
-import CreateAccountForm from './components/CreateAccountForm';
 import NotFound from './components/NotFound';
-import NavBar from './components/navbar';
 
 import CompanyDashboard from './components/CompanyDashboard';
 
@@ -15,12 +13,10 @@ class App extends Component{
     render() {
       return (
         <div >
-            <NavBar />
             <div className="content" >
               <Switch>
                 <Route path="/login" component={LoginForm}/>
                 <Route path="/register" component={RegisterForm}/>
-                <Route path="/createaccount" component={CreateAccountForm}/>
 
                 <Route path="/companydashboard" component={CompanyDashboard}/>
 
