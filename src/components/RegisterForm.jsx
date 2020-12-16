@@ -5,42 +5,55 @@ import Button from "react-bootstrap/Button";
 import NavBar from './navbar';
 
 class RegisterForm extends React.Component {
-    state = {
-        account: {companyName: "",address: "",username: "", password: "",confirm: ""},
-        errors: {}
-    };
+    
+    constructor(){
 
-    schema = {
-        companyName: Joi
-            .string()
-            .required()
-            .label("Company name"),
-        address: Joi
-            .string()
-            .required()
-            .label("Address"),
-        username: Joi
-            .string()
-            .required()
-            .label("Username"),
-        password: Joi
-            .string()
-            .required()
-            .label("Password"),
-        confirm: Joi
-            .string()
-            .required()
-            .label("Confirm")
+        super();
 
-    };
+        this.state = {
+            companyName: "",
+            address: "",
+            username: "",
+            password: "",
+            confirm: "",
+            description: ""
+        };
+
+        this.schema = {
+            companyName: Joi
+                .string()
+                .required()
+                .label("Company name"),
+            address: Joi
+                .string()
+                .required()
+                .label("Address"),
+            username: Joi
+                .string()
+                .required()
+                .label("Username"),
+            password: Joi
+                .string()
+                .required()
+                .label("Password"),
+            confirm: Joi
+                .string()
+                .required()
+                .label("Confirm")
+
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.doSubmit = this.doSubmit.bind(this);
+    }
 
     doSubmit = () => {
         const payload = {
-            name: this.state.account.name,
-            address: this.state.account.address,
-            username: this.state.account.username,
-            password: this.state.account.password,
-            description: this.state.account.description
+            name: this.state.name,
+            address: this.state.address,
+            username: this.state.username,
+            password: this.state.password,
+            description: "Cool company!"
         }
         fetch('http://localhost:8080/hr/register', {
             method: 'POST',
@@ -53,17 +66,27 @@ class RegisterForm extends React.Component {
             .then(res => {
                 if (res.status === 200) {
                     this.props.history.replace("/login")
-                    alert("Welcome to our page! ")
                 }
                 else if (res.status === 401) {
                     alert("Username already exist!")
                     this.setState({
-                        account : {name: "", address: "", username: "", password: "", confirm: "", description: ""}
+                        name: "", 
+                        address: "", 
+                        username: "", 
+                        password: "", 
+                        confirm: "", 
+                        description: ""
                     })
                 }
             })
         console.log('Submitted');
     }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    };
 
     render() {
         document.body.classList = "";
@@ -78,30 +101,30 @@ class RegisterForm extends React.Component {
                     <hr />
                         <Form.Group controlId="formCompanyName">
                         <Form.Label className="labels">Company name</Form.Label>
-                        <Form.Control className="align-self-center" type="text" placeholder="Company name"/>
+                        <Form.Control name="name" className="align-self-center" type="text" placeholder="Company name" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formAddress">
                         <Form.Label className="labels">Address</Form.Label>
-                        <Form.Control className="align-self-center" type="text" placeholder="Address"/>
+                        <Form.Control name="address" className="align-self-center" type="text" placeholder="Address" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formUser">
                         <Form.Label className="labels">Username</Form.Label>
-                        <Form.Control className="align-self-center" type="text" placeholder="Username"/>
+                        <Form.Control name="username" className="align-self-center" type="text" placeholder="Username" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formPassword">
                         <Form.Label className="labels">Password</Form.Label>
-                        <Form.Control className="align-self-center" type="password" placeholder="Password"/>
+                        <Form.Control name="password" className="align-self-center" type="password" placeholder="Password" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formConfirmPassword">
                         <Form.Label className="labels">Confirm password</Form.Label>
-                        <Form.Control className="align-self-center" type="password" placeholder="Confirm password"/>
+                        <Form.Control className="align-self-center" type="password" placeholder="Confirm password" onChange={this.handleChange}/>
                         </Form.Group>
-                        <Button className="align-self-center mybtn">
-                        SUBMIT
+                        <Button className="align-self-center mybtn" onClick={this.doSubmit}>
+                            SUBMIT
                         </Button>
                 </Form>
             </div>
