@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
                         const { result, name } = json
                         localStorage.setItem('name', name)
                         if (result === "company")
-                            this.props.history.push("/companydashboard");
+                            this.props.history.replace("/companydashboard");
                         if (result === "employee")
                             this.props.history.replace("/employeedashboard")
 

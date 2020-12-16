@@ -2,16 +2,14 @@ import React from "react";
 import NavBar from "./navbar";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Joi from "joi-browser";
 
-export default class ContactPage extends React.Component{
+export default class ContactForm extends React.Component{
     constructor() {
         super();
         this.state = {
             name: "",
             email: "",
-            message: "",
-            errors: {}
+            message: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.doSubmit = this.doSubmit.bind(this);
@@ -19,12 +17,27 @@ export default class ContactPage extends React.Component{
 
     doSubmit = () => {
         const payload = {
-            name: this.state.username,
-            email: this.state.password,
-            message: this.state.password
+            name: this.state.name,
+            email: this.state.email,
+            message: this.state.message
         }
-        console.log(payload);
-        console.log('Submitted');
+        fetch('http://localhost:8080/hr/contact', {
+            method: 'POST',
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+            .then(res => {
+                if (res.status === 200) {
+                    alert("Message has been submitted!")
+                    this.props.history.replace("/");
+                }
+                else {
+                    alert("Error!")
+                }
+            })
     }
 
     handleChange(event) {
@@ -32,6 +45,7 @@ export default class ContactPage extends React.Component{
             [event.target.name]: event.target.value
         })
     };
+
     render() {
         document.body.classList = "";
         document.body.classList.add("background-general");
