@@ -2,7 +2,7 @@ import React from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import { withRouter } from "react-router";
 import SidebarEmployee from "./sidebarEmployee";
-import ContractsView from "./ContractsView";
+import EmployeeContractView from "./EmployeeContractView";
 
 class EmployeeDashboard extends React.Component {
 
@@ -14,7 +14,7 @@ class EmployeeDashboard extends React.Component {
 
     show(type){
         switch(type){
-            case "detalii_contract": this.setState({render: <ContractsView/>}); break;
+            case "detalii_contract": this.setState({render: <EmployeeContractView/>}); break;
             case "logout": this.logout(); break;
             default: this.setState({render: null})
         }

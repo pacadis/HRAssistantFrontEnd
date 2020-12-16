@@ -1,4 +1,5 @@
 import React from "react";
+import {Table} from "react-bootstrap";
 
 export default class ContractsView extends React.Component{
 
@@ -8,13 +9,13 @@ export default class ContractsView extends React.Component{
             contracts: []
         };
 
-        this.renderContract = this.renderContract.bind(this);
+        this.renderContracts = this.renderContracts.bind(this);
 
         const payload = {
             username: localStorage.getItem('username')
         }
 
-        fetch('http://localhost:8080/hr/viewContract/' + payload.username, {
+        fetch('http://localhost:8080/hr/viewContracts/' + payload.username, {
             method: 'GET',
             headers: {
                 'Accept' : 'application/json',
@@ -35,58 +36,30 @@ export default class ContractsView extends React.Component{
             })
     }
 
-    renderContract = (contract) => {
+    renderContracts = (contract) => {
         const { firstName, lastName, grossSalary, hireDate, type, duration, expirationDate, cnp} = contract;
         return(
-            <table className="table table-inverse table-light align-self-center" style={{width: "auto"}}>
+           <Table responsive="sm" striped bordered hover variant="light">
                 <thead>
-                <tr>
-                    <th>Detalii contract {lastName} {firstName}: </th>
-                </tr>
+                  <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">First Name</th>
+                  <tr>
                     <td>{firstName}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Last Name</th>
                     <td>{lastName}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Gross Salary</th>
-                    <td>{grossSalary}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Hire Date</th>
-                    <td>{hireDate}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Type</th>
-                    <td>{type}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Duration</th>
-                    <td>{duration}</td>
-                </tr>
-                <tr>
-                    <th scope="row">Expiration date</th>
-                    <td>{expirationDate}</td>
-                </tr>
-                <tr>
-                    <th scope="row">CNP</th>
-                    <td>{cnp}</td>
-                </tr>
-
+                  </tr>
                 </tbody>
-            </table>
+            </Table>
         )
     }
 
     render(){
         return (
             <div className="card-deck">
-                {this.renderContract(this.state.contracts)}
+                {this.state.contracts.map(contract => this.renderContracts(contract))}
             </div>
         );
     }
