@@ -53,8 +53,6 @@ class CreateAccountForm extends React.Component {
             password: this.state.password
         }
         
-        console.log(payload.company)
-
         fetch('http://localhost:8080/hr/employee', {
             method: 'POST',
             headers: {
@@ -92,7 +90,6 @@ class CreateAccountForm extends React.Component {
     }
 
     handleChange(event) {
-        console.log(this.state)
         this.setState({
             [event.target.name]: event.target.value
         })

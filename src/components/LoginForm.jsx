@@ -71,7 +71,6 @@ class LoginForm extends React.Component {
         })
     };
 
-
     render() {
         document.body.classList = "";
         document.body.classList.add("background-general");

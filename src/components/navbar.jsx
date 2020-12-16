@@ -9,6 +9,10 @@ class BootstrapNavbar extends React.Component{
         window.addEventListener('scroll', this.handleScroll);
     }
 
+    componentWillUnmount(){
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
     handleScroll(){
         const distanceY = window.pageYOffset || document.documentElement.scrollTop;
         if(distanceY > 80){

@@ -13,6 +13,15 @@ import {
 
 export default class SidebarEmployee extends React.Component {
 
+    constructor(){
+        super();
+        this.redirect = this.redirect.bind(this)
+    }
+
+    redirect = () => {
+        this.props.history.push('/')
+    }
+
     render() {
 
         return (
@@ -24,7 +33,7 @@ export default class SidebarEmployee extends React.Component {
                         imageName='react logo'/>
                 </Link>
 
-                <LogoText>Dashboard</LogoText>
+                <LogoText>{localStorage.getItem('name')}</LogoText>
 
                 <Item bgColor='black' onClick={() => this.props.show("detalii_contract")}>
                     <FontAwesomeIcon icon={faIdCard} style={{marginRight: "1rem"}}/>
