@@ -38,7 +38,7 @@ class SidebarCompany extends React.Component {
             </div>
 
             <LogoText>{localStorage.getItem('name')}</LogoText>
-            <Item bgColor='black' onClick={() => this.props.show("afisare_angajati")}>
+            <Item bgColor='black' onClick={() => this.props.show("gestionare_angajati")}>
                 <FontAwesomeIcon icon={faIdBadge} style={{marginRight: "1rem"}}/>
                 Gestionare conturi
             </Item>

@@ -1,7 +1,3 @@
-// import React from "react";
-// import logo from "../img/logo.png"
-// import {Link, NavLink} from 'react-router-dom';
-// import { Nav, Navbar, Form, Button, FormControl} from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import React from 'react'
 import { Navbar,Nav } from 'react-bootstrap'
@@ -27,7 +23,7 @@ class BootstrapNavbar extends React.Component{
         return(
              <Navbar id="navigation" bg="dark" variant="dark" expand="sm" sticky="top">
                 <Navbar.Brand id="logo" className="navbar-brand" href="/">
-                     <img src={sigla} style={{marginTop: -7}} />
+                     <img alt="NoPhoto" src={sigla} style={{marginTop: -7}} />
                  </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">

@@ -1,17 +1,13 @@
 import React from 'react';
 
-import {Sidebar, DropdownItem, Icon, Item, Logo, LogoText} from 'react-sidebar-ui'
+import {Sidebar, Item, Logo, LogoText} from 'react-sidebar-ui'
 import 'react-sidebar-ui/dist/index.css';
-import {Link, BrowserRouter as Router , Route, Switch} from "react-router-dom";
+import {Link} from "react-router-dom";
 import sigla from "../img/sigla.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-    faAddressCard,
-    faPaperPlane,
-    faUserPlus,
-    faChartBar,
     faSignOutAlt,
-    faIdCard, faFileInvoice, faFileInvoiceDollar, faPlaneDeparture, faUserClock, faFolderPlus
+    faIdCard, faFileInvoiceDollar, faPlaneDeparture, faUserClock, faFolderPlus
 } from '@fortawesome/free-solid-svg-icons'
 
 
