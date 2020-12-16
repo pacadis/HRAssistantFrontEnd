@@ -31,6 +31,7 @@ class BootstrapNavbar extends React.Component{
                     <Nav.Link href="/" className="mybtnnavbar">Home</Nav.Link>
                     <Nav.Link href="/register" className="mybtnnavbar">Register</Nav.Link>
                      <Nav.Link href="/login" className="mybtnnavbar">Login</Nav.Link>
+                     <Nav.Link href="/contact" className="mybtnnavbar">Contact</Nav.Link>
                      </Nav>
                  </Navbar.Collapse>
             </Navbar>

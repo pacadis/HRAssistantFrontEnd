@@ -8,6 +8,7 @@ import NotFound from './components/NotFound';
 
 import CompanyDashboard from './components/CompanyDashboard';
 import EmployeeDashboard from "./components/EmployeeDashboard";
+import ContactPage from "./components/ContactPage";
 
 
 class App extends Component{
@@ -18,6 +19,7 @@ class App extends Component{
               <Switch>
                 <Route path="/login" component={LoginForm}/>
                 <Route path="/register" component={RegisterForm}/>
+                <Route path="/contact" component={ContactPage}/>
 
                 <Route path="/companydashboard" component={CompanyDashboard}/>
                 <Route path="/employeedashboard" component={EmployeeDashboard}/>
