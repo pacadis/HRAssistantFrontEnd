@@ -3,6 +3,7 @@ import {Container, Row, Col, Card, Form, Button } from "react-bootstrap";
 import { withRouter } from "react-router";
 import SidebarCompany from "./sidebarCompany.jsx";
 import CreateAccountForm from "./CreateAccountForm"
+import EmployeesView from "./EmployeesView"
 
 class CompanyDashboard extends React.Component {
     
@@ -15,6 +16,7 @@ class CompanyDashboard extends React.Component {
     show(type){
         switch(type){
             case "creare_cont": this.setState({render: <CreateAccountForm/>}); break;
+            case "afisare_angajati": this.setState({render: <EmployeesView/>}); break;
             case "logout": this.logout(); break;
             default: this.setState({render: null})
         }
@@ -26,8 +28,11 @@ class CompanyDashboard extends React.Component {
     }
     
     render(){
+        document.body.classList = "";
+        document.body.classList.add("background-dashboard");
         return (
-            <div className="background-dashboard">
+
+            <div>
             <Container fluid>
                     <Row>
                         <Col xs={2} id="sidebar-wrapper">      

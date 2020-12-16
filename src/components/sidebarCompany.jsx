@@ -1,8 +1,7 @@
 import React from 'react';
 
-import {Sidebar, DropdownItem, Icon, Item, Logo, LogoText} from 'react-sidebar-ui'
+import {Sidebar, Item, Logo, LogoText} from 'react-sidebar-ui'
 import 'react-sidebar-ui/dist/index.css';
-import {Link, BrowserRouter as Router , Route, Switch} from "react-router-dom";
 import sigla from "../img/sigla.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -13,23 +12,33 @@ import {
     faSignOutAlt,
     faIdBadge
 } from '@fortawesome/free-solid-svg-icons'
+import { withRouter } from 'react-router-dom';
 
 
-export default class SidebarCompany extends React.Component {
+class SidebarCompany extends React.Component {
+
+    constructor(){
+        super();
+        this.redirect = this.redirect.bind(this)
+    }
+
+    redirect = () => {
+        this.props.history.push('/')
+    }
 
     render() {
 
       return (
             <Sidebar bgColor='black' isCollapsed={false}>
 
-            <Link to="/">
+            <div onClick={this.redirect} style={{cursor: "pointer"}}>
                 <Logo
                 image={sigla}
                 imageName='react logo'/>
-            </Link>
+            </div>
 
             <LogoText>{localStorage.getItem('name')}</LogoText>
-            <Item bgColor='black' onClick={() => this.props.show("gestionare_angajati")}>
+            <Item bgColor='black' onClick={() => this.props.show("afisare_angajati")}>
                 <FontAwesomeIcon icon={faIdBadge} style={{marginRight: "1rem"}}/>
                 Gestionare conturi
             </Item>
@@ -65,3 +74,5 @@ export default class SidebarCompany extends React.Component {
       )
     };
 }
+
+export default withRouter(SidebarCompany);

@@ -25,6 +25,8 @@ class EmployeeDashboard extends React.Component {
     }
 
     render(){
+        document.body.classList = "";
+        document.body.classList.add("background-dashboard");
         return (
             <div className="background-dashboard">
                 <Container fluid>

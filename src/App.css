@@ -4,7 +4,7 @@ body, html, #root, .app, .container {
 
 }
 
-body{
+body.background-general{
   background-image: url(./img/bgHR.png);
   background-position: center;
   background-attachment: fixed;
@@ -13,8 +13,13 @@ body{
   display: flex;
 }
 
-.background-dashboard{
-  background-color: rgba(240, 240, 240, 1.0);
+body.background-dashboard{
+  background-image: url(https://wallpapercave.com/wp/wp3264044.jpg);
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
 }
 
 .container {

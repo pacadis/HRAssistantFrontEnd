@@ -73,9 +73,10 @@ class LoginForm extends React.Component {
 
 
     render() {
-        console.log("render")
+        document.body.classList = "";
+        document.body.classList.add("background-general");
         return (
-            <div className="background-general">
+            <div>
             <NavBar/>
             <div className="d-flex justify-content-center align-items-center" style={{height:"100vh", marginTop:"100px"}}>
                 <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>

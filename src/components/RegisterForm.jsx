@@ -66,6 +66,8 @@ class RegisterForm extends React.Component {
     }
 
     render() {
+        document.body.classList = "";
+        document.body.classList.add("background-general");
         return (
             <div className="background-general">
             <NavBar/>
@@ -95,7 +97,7 @@ class RegisterForm extends React.Component {
                         </Form.Group>
 
                         <Form.Group controlId="formConfirmPassword">
-                        <Form.Label className="labels">Address</Form.Label>
+                        <Form.Label className="labels">Confirm password</Form.Label>
                         <Form.Control className="align-self-center" type="password" placeholder="Confirm password"/>
                         </Form.Group>
                         <Button className="align-self-center mybtn">

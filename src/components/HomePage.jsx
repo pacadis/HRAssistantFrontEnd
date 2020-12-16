@@ -1,13 +1,17 @@
 import React from "react";
 import NavBar from './navbar';
 
-const HomePage = () => {
-  return (
-    <body className="background-general">
-      <NavBar/>
-      <h1>Acasa</h1>
-    </body>
-  );
+class HomePage extends React.Component{
+  render() {
+    document.body.classList = "";
+    document.body.classList.add("background-general");
+    return (
+      <div>
+        <NavBar/>
+        <h1>Acasa</h1>
+      </div>
+    );
+  }
 };
 
 export default HomePage;
