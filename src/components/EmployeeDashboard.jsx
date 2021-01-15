@@ -3,6 +3,11 @@ import {Container, Row, Col} from "react-bootstrap";
 import { withRouter } from "react-router";
 import SidebarEmployee from "./sidebarEmployee";
 import EmployeeContractView from "./EmployeeContractView";
+import EmployeeClockingView from "./EmployeeClockingView";
+import EmployeePayslipView from "./EmployeePayslipView";
+import EmployeeHolidayView from "./EmployeeHolidayView";
+import EmployeeCreateRequestView from "./EmployeeCreateRequestView";
+
 
 class EmployeeDashboard extends React.Component {
 
@@ -15,6 +20,10 @@ class EmployeeDashboard extends React.Component {
     show(type){
         switch(type){
             case "detalii_contract": this.setState({render: <EmployeeContractView/>}); break;
+            case "vizualizare_pontaj": this.setState({render : <EmployeeClockingView/>}); break;
+            case "fluturas_salariu": this.setState({render: <EmployeePayslipView />}); break;
+            case "vizualizare_concedii" : this.setState({render: <EmployeeHolidayView />}); break;
+            case "inregistrare_cerere" : this.setState({render: <EmployeeCreateRequestView/>}); break;
             case "logout": this.logout(); break;
             default: this.setState({render: null})
         }
@@ -42,6 +51,21 @@ class EmployeeDashboard extends React.Component {
 
                 </Container>
             </div>
+
+            //varianta atanasov
+            // <div className="background-dashboard">
+            //     <div className="container">
+            //         <div className="row">
+            //             <div className="col-3"  >
+            //                 <SidebarEmployee show={this.show}/>
+            //             </div>
+            //             <div className="col"  >
+            //                 { this.state.render }
+            //             </div>
+            //         </div>
+
+            //     </div>
+            // </div>
         );
     }
 };
