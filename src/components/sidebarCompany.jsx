@@ -44,10 +44,7 @@ class SidebarCompany extends React.Component {
                 Gestionare conturi
             </Item>
 
-            <Item bgColor='black' onClick={() => this.props.show("vizualizare_contracte")}>
-                <FontAwesomeIcon icon={faAddressCard} style={{marginRight: "1rem"}}/>
-                Vizualizare contracte
-            </Item>
+        
 
             <Item bgColor='black' onClick={() => this.props.show("vizualizare_cereri")}>
                 <FontAwesomeIcon icon={faPaperPlane} style={{marginRight: "1rem"}}/>
@@ -60,10 +57,7 @@ class SidebarCompany extends React.Component {
                     Creează cont
             </Item>
 
-            <Item bgColor='black' onClick={() => this.props.show("statistici")}>
-                <FontAwesomeIcon icon={faChartBar} style={{marginRight: "1rem"}}/>
-                    Statistici angajați
-            </Item>
+        
 
            <div className="button-logout">
                <Item verticalAlign="bottom" bgColor='black' onClick={() => this.props.show("logout")}>

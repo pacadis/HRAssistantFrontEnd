@@ -7,6 +7,7 @@ export default class EditEmployee extends React.Component{
 
     constructor(props){
         super(props)
+
         this.state = {
             firstName: "", 
             lastName: "", 
@@ -15,13 +16,34 @@ export default class EditEmployee extends React.Component{
             cnp: "",
             grossSalary: "",
             type: "",
-            hireDate: "",
+            hireDate: new Date(),
             duration: "",
-            expirationDate: ""
+            expirationDate: new Date()
         };
 
+        fetch('http://localhost:8080/hr/employee' + '/' + this.props.match.params.id , {
+            method: 'GET',
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type':'application/json'
+            },
+            body: JSON.stringify()
+        })
+        .then(res => res.json())
+        .then(data => this.setState({firstName: data.firstName,
+                                     lastName : data.lastName,
+                                     username: data.username,
+                                     password: data.password,
+                                     cnp: data.cnp,
+                                     grossSalary: data.grossSalary,
+                                     type: data.type,
+                                     hireDate: data.hireDate,
+                                     duration: data.duration,
+                                     expirationDate: data.expirationDate                    
+                }))
         this.handleChange = this.handleChange.bind(this);
         this.doSubmit = this.doSubmit.bind(this);
+        
 
         
 
@@ -31,14 +53,20 @@ export default class EditEmployee extends React.Component{
         const payload = {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
-            cnp: this.state.cnp,
-            company: localStorage.getItem('username'),
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            cnp: this.state.cnp,
+            grossSalary: this.state.grossSalary,
+            type: this.state.type,
+            hireDate: this.state.hireDate,
+            duration: this.state.duration,
+            expirationDate: this.state.expirationDate
+            
         }
+
         
-        fetch('http://localhost:8080/hr/employee', {
-            method: 'POST',
+        fetch('http://localhost:8080/hr/employee' + '/' + this.props.match.params.id , {
+            method: 'PUT',
             headers: {
                 'Accept' : 'application/json',
                 'Content-type':'application/json'
@@ -47,13 +75,18 @@ export default class EditEmployee extends React.Component{
         })
             .then(res => {
                 if (res.status === 200) {
-                    alert("Account created!")
+                    alert("Modificat")
                     this.setState({
                         firstName: "", 
                         lastName: "", 
-                        cnp: "", 
-                        username: "", 
-                        password: ""
+                        username: this.props.match.params.id,
+                        password: "",
+                        cnp: "",
+                        grossSalary: "",
+                        type: "",
+                        hireDate: "",
+                        duration: "",
+                        expirationDate: ""
                     })
                 }
                 else if (res.status === 401) {
@@ -61,58 +94,104 @@ export default class EditEmployee extends React.Component{
                     this.setState({
                         firstName: "", 
                         lastName: "", 
-                        cnp: "", 
-                        username: "", 
-                        password: ""
+                        username: this.props.match.params.id,
+                        password: "",
+                        cnp: "",
+                        grossSalary: "",
+                        type: "",
+                        hireDate: "",
+                        duration: "",
+                        expirationDate: ""
                     })
                 }
-                else if(res.status === 418){
-                    alert("Invalid CNP!")
+                else if(res.status === 417){
+                    res.text().then(text =>{
+                        
+                        console.log(text);
+
+                    });
                 }
             })
-        console.log('Submitted');
+            this.props.history.goBack();
     }
 
     handleChange(event) {
-        
+        this.setState({
+            [event.target.name]: event.target.value
+        })
     };
 
     render() {
         return (
 
-            <div className="d-flex justify-content-center align-items-center" style={{height:"115vh", marginTop:"70px"}}>
+            <div className="d-flex justify-content-center align-items-center" style={{height:"100vh", marginTop:"450px", marginBottom:"10rem"}}>
                 
-                <h1> {this.state.username} </h1>
-                
-                <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%", marginTop:"80px"}}>
-                    <h2 className="align-self-center">Creeaza cont angajat</h2>
+                <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>
+                    <h2 className="align-self-center">Editeaza cont angajat</h2>
                     <hr />
                         <Form.Group controlId="formFirstName">
                         <Form.Label className="labels">Prenume</Form.Label>
-                        <Form.Control name="firstName" className="align-self-center" type="text" placeholder="Prenume" onChange={this.handleChange}/>
+                        <Form.Control name="firstName" className="align-self-center"  type="text" placeholder="Prenume" value={this.state.firstName} onChange={this.handleChange}>
+                        </Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId="formLastName">
                         <Form.Label className="labels">Nume</Form.Label>
-                        <Form.Control name="lastName" className="align-self-center" type="text" placeholder="Nume" onChange={this.handleChange}/>
+                        <Form.Control name="lastName" className="align-self-center" type="text" placeholder="Nume" value={this.state.lastName} onChange={this.handleChange}/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formUsername">
+                        <Form.Label className="labels">Nume utilizator</Form.Label>
+                        <Form.Control name="username" className="align-self-center" type="text" placeholder="Nume utilizator"  value={this.state.username} onChange={this.handleChange}/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formPassword">
+                        <Form.Label className="labels">Password</Form.Label>
+                        <Form.Control name="password" className="align-self-center" type="password" placeholder="Parola" value={this.state.password} onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="cnp">
                         <Form.Label className="labels">Cod Numeric Personal</Form.Label>
-                        <Form.Control name="cnp" className="align-self-center" type="text" placeholder="CNP" onChange={this.handleChange}/>
+                        <Form.Control name="cnp" className="align-self-center" type="text" placeholder="CNP"  value={this.state.cnp} onChange={this.handleChange}/>
                         </Form.Group>
 
-                        <Form.Group controlId="formUser">
-                        <Form.Label className="labels">Nume utilizator</Form.Label>
-                        <Form.Control name="username" className="align-self-center" type="text" placeholder="Nume utilizator" onChange={this.handleChange}/>
+                        <Form.Group controlId="formGrossSalary">
+                        <Form.Label className="labels">Salariu brut</Form.Label>
+                        <Form.Control name="grossSalary" className="align-self-center" type="text" placeholder="Salariu brut" value={this.state.grossSalary} onChange={this.handleChange}/>
                         </Form.Group>
 
-                        <Form.Group controlId="formPassword">
-                        <Form.Label className="labels">Parola</Form.Label>
-                        <Form.Control name="password" className="align-self-center" type="password" placeholder="Parola" onChange={this.handleChange}/>
+                        <Form.Group controlId="formType">
+                        <Form.Label className="labels">Tip </Form.Label>
+                        <Form.Control name="type" className="align-self-center" as="select" placeholder="Tip" value={this.state.type} onChange={this.handleChange}>
+                            <option>
+                                FullTime
+                            </option>
+                            <option>
+                                PartTime4
+                            </option>
+                            <option>
+                                PartTime6
+                            </option>
+                        </Form.Control>
                         </Form.Group>
+
+                        <Form.Group controlId="formHireDate">
+                        <Form.Label className="labels">Data angajare</Form.Label>
+                        <Form.Control name="hireDate" className="align-self-center" type="date" placeholder="Data angajare" value={this.state.hireDate} onChange={this.handleChange}/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formDuration">
+                        <Form.Label className="labels">Durata </Form.Label>
+                        <Form.Control name="duration" className="align-self-center" type="text" placeholder="Durata" value={this.state.duration} onChange={this.handleChange}/>
+                        </Form.Group>
+
+                        <Form.Group controlId="formExpirationDate">
+                        <Form.Label className="labels">Data expirare</Form.Label>
+                        <Form.Control name="expirationDate" className="align-self-center" type="date" placeholder="Data expirare" value={this.state.expirationDate} onChange={this.handleChange}/>
+                        </Form.Group>
+
                         <Button className="align-self-center mybtn" onClick={this.doSubmit}>
-                            SUBMIT
+                            TRIMITE
                         </Button>
                 </Form>
             </div>

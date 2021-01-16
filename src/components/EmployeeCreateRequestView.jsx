@@ -8,7 +8,7 @@ export default class ExmployeeCreateRequestView extends React.Component{
         super();
         this.state = {
             description: "",
-            requestStatus: "",
+            requestStatus: "PENDING",
             type         : "",
             date         : "",//data curenta
             fromDate     : "", //from si to sa alegem noi
@@ -21,14 +21,16 @@ export default class ExmployeeCreateRequestView extends React.Component{
 
     doSubmit = () => {
         const payload = {
+            usernameEmployee: localStorage.getItem('username'),
             description: this.state.description,
             requestStatus: this.state.requestStatus,
             type: this.state.type,
             date: this.state.date,
-            fromDate: this.fromDate,
+            fromDate: this.state.fromDate,
             toDate: this.state.toDate,
             proxyName: this.state.proxyName
         }
+        //console.log(payload);
         fetch('http://localhost:8080/hr/saveRequest', {
             method: 'POST',
             headers: {
@@ -39,11 +41,23 @@ export default class ExmployeeCreateRequestView extends React.Component{
         })
             .then(res => {
                 if (res.status === 200) {
-                    alert("Bine ati venit, inregistrati cererea dvs!")
-                    this.props.history.replace("/");
+                    alert("Cererea s-a inregistrat cu succes!")
+                    this.state = {
+                        description: "",
+                        requestStatus: "PENDING",
+                        type         : "",
+                        date         : "",//data curenta
+                        fromDate     : "", //from si to sa alegem noi
+                        toDate       : "",
+                        proxyName    : ""
+                    };
                 }
-                else {
-                    alert("Error!")
+                else if(res.status === 417){
+                    res.text().then(text =>{
+                        
+                        console.log(text);
+
+                    });
                 }
             })
     }
@@ -66,17 +80,29 @@ export default class ExmployeeCreateRequestView extends React.Component{
                         <hr/>
                         <Form.Group controlId="formDescription">
                             <Form.Label className="labels">Descriere</Form.Label>
-                            <Form.Control className="align-self-center" as="textarea" rows={2} name="Descriere" type="text" placeholder="Descriere" onChange={this.handleChange}/>
+                            <Form.Control className="align-self-center" as="textarea" rows={2} name="description" type="text" placeholder="Descriere" onChange={this.handleChange}/>
                         </Form.Group>
 
-                        <Form.Group controlId="formRequestStatus">
-                            <Form.Label className="labels">Status cerere</Form.Label>
-                            <Form.Control className="align-self-center" name="requestStatus" type="text" placeholder="Status cerere" onChange={this.handleChange}/>
-                        </Form.Group>
-
+                      
                         <Form.Group controlId="formType">
                             <Form.Label className="labels">Tip cerere</Form.Label>
-                            <Form.Control className="align-self-center" name="type" type="text" placeholder="Tip cerere" onChange={this.handleChange}/>
+                            <Form.Control className="align-self-center" name="type" as="select" placeholder="type" onChange={this.handleChange}>
+                            <option>
+                                Concediu
+                            </option>
+                            <option>
+                                Concediu pentru donare de sange
+                            </option>
+                            <option>
+                                Concediu din ore suplimentare
+                            </option>
+                            <option>
+                                Concediu pentru inmormantare
+                            </option>
+                            <option>
+                                Concediu pentru casatorie
+                            </option>
+                        </Form.Control>
                         </Form.Group>
 
                         <Form.Group controlId="formDate">

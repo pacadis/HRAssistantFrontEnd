@@ -48,7 +48,6 @@ class CompanyDashboard extends React.Component {
         switch(type){
             case "creare_cont": this.setState({render: <CreateAccountForm/>}); break;
             case "gestionare_angajati": this.setState({render: <EmployeesView/>}); break;
-            case "vizualizare_contracte": this.setState({render: <ContractsView/>}); break;
             case "vizualizare_cereri": this.setState({render: <RequestsView/>}); break;
             case "logout": this.logout(); break;
             default: this.setState({render: null})
