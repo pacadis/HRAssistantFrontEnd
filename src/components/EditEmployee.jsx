@@ -10,7 +10,7 @@ export default class EditEmployee extends React.Component{
         this.state = {
             firstName: "", 
             lastName: "", 
-            username: "",
+            username: this.props.match.params.id,
             password: "",
             cnp: "",
             grossSalary: "",
@@ -23,11 +23,8 @@ export default class EditEmployee extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.doSubmit = this.doSubmit.bind(this);
 
-    }
+        
 
-    componentDidMount(){
-        console.log("PULA")
-        this.setState({username: this.props.match.params.id});
     }
 
     doSubmit = () => {
