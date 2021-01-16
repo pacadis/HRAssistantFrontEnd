@@ -1,5 +1,4 @@
-import React,  { useState }  from "react";
-import DatePicker from "react-datepicker";
+import React from "react";
 
 export default class EmployeePayslipView extends React.Component{
     constructor(){

@@ -25,10 +25,8 @@ export default class RequestsView extends React.Component{
             .then(res => {
                 if (res.status === 200) {
                     res.json().then(json =>{
-                        this.setState({contracts: json});
+                        this.setState({requests: json});
                     });
-
-                    // LOGIN PERSISTANCE
                 }
                 else {
                     console.log("error")
@@ -45,8 +43,8 @@ export default class RequestsView extends React.Component{
                 <td>{description}</td>
                 <td>{requestStatus}</td>
                 <td>{date}</td>
-                <td><button class="btn btn-success">ACCEPTA</button></td>
-                <td><button class="btn btn-danger">REFUZA</button></td>
+                <td><button className="btn btn-success">ACCEPTA</button></td>
+                <td><button className="btn btn-danger">REFUZA</button></td>
             </tr>
         )
     }
@@ -62,8 +60,6 @@ export default class RequestsView extends React.Component{
                         <th>Descriere</th>
                         <th>Status</th>
                         <th>Data</th>
-                        <th><button class="btn btn-success">ACCEPTA</button></th>
-                        <th><button class="btn btn-danger">REFUZA</button></th>
                     </tr>
                     </thead>
                     <tbody>

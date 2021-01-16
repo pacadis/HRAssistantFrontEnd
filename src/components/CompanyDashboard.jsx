@@ -5,6 +5,7 @@ import SidebarCompany from "./sidebarCompany.jsx";
 import CreateAccountForm from "./CreateAccountForm"
 import EmployeesView from "./EmployeesView"
 import ContractsView from "./ContractsView";
+import RequestsView from "./RequestsView";
 
 class CompanyDashboard extends React.Component {
     
@@ -19,6 +20,7 @@ class CompanyDashboard extends React.Component {
             case "creare_cont": this.setState({render: <CreateAccountForm/>}); break;
             case "gestionare_angajati": this.setState({render: <EmployeesView/>}); break;
             case "vizualizare_contracte": this.setState({render: <ContractsView/>}); break;
+            case "vizualizare_cereri": this.setState({render: <RequestsView/>}); break;
             case "logout": this.logout(); break;
             default: this.setState({render: null})
         }
