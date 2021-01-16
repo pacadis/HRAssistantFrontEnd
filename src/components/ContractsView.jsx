@@ -39,27 +39,39 @@ export default class ContractsView extends React.Component{
     renderContracts = (contract) => {
         const { firstName, lastName, grossSalary, hireDate, type, duration, expirationDate, cnp} = contract;
         return(
-           <Table responsive="sm" striped bordered hover variant="light">
-                <thead>
-                  <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
+                <tr>
                     <td>{firstName}</td>
                     <td>{lastName}</td>
-                  </tr>
-                </tbody>
-            </Table>
+                    <td>{grossSalary}</td>
+                    <td>{hireDate}</td>
+                    <td>{type}</td>
+                    <td>{duration}</td>
+                    <td>{expirationDate}</td>
+                    <td>{cnp}</td>
+                </tr>
         )
     }
 
     render(){
         return (
             <div className="card-deck">
-                {this.state.contracts.map(contract => this.renderContracts(contract))}
+                <Table striped bordered hover variant="light" size="sm">
+                    <thead>
+                    <tr>
+                        <th>Prenume</th>
+                        <th>Nume</th>
+                        <th>Salariu brut</th>
+                        <th>Data angajarii</th>
+                        <th>Tip</th>
+                        <th>Durata</th>
+                        <th>Data expirarii</th>
+                        <th>CNP</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {this.state.contracts.map(contract => this.renderContracts(contract))}
+                    </tbody>
+                </Table>
             </div>
         );
     }
