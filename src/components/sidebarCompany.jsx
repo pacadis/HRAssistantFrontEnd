@@ -13,12 +13,13 @@ import {
     faIdBadge
 } from '@fortawesome/free-solid-svg-icons'
 import { withRouter } from 'react-router-dom';
+import { Badge } from 'react-bootstrap';
 
 
 class SidebarCompany extends React.Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.redirect = this.redirect.bind(this)
     }
 
@@ -51,6 +52,7 @@ class SidebarCompany extends React.Component {
             <Item bgColor='black' onClick={() => this.props.show("vizualizare_cereri")}>
                 <FontAwesomeIcon icon={faPaperPlane} style={{marginRight: "1rem"}}/>
                 Vizualizare cereri
+                <span className="badge badge-pill badge-danger" style={{marginLeft: "1rem"}}> {this.props.pending} </span>
             </Item>
 
             <Item bgColor='black' onClick={() => this.props.show("creare_cont")}>

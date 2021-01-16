@@ -9,10 +9,39 @@ import RequestsView from "./RequestsView";
 
 class CompanyDashboard extends React.Component {
     
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.show = this.show.bind(this);
-        this.state = {render: null}
+        this.getPendingRequests = this.getPendingRequests.bind(this)
+        this.state = {render: null, pendingRequests: this.getPendingRequests()}
+    }
+
+    getPendingRequests() {
+
+        fetch('http://localhost:8080/hr/noRequests/' + localStorage.getItem('username'), {
+            method: 'GET',
+            headers: {
+                'Accept' : 'application/json',
+                'Content-type':'application/json'
+            }
+        })
+            .then(res => {
+                
+                if (res.status === 200) {
+
+                    res.text().then(text =>{
+                        
+                        console.log(text);
+                        localStorage.setItem('pendingRequests', text)
+                        this.setState({pendingRequests: text})
+
+                    });
+                }
+                else if (res.status === 404) {
+                    alert("Internal server error")
+                }
+        });
+
     }
 
     show(type){
@@ -34,13 +63,14 @@ class CompanyDashboard extends React.Component {
     render(){
         document.body.classList = "";
         document.body.classList.add("background-dashboard");
+
         return (
 
             <div>
             <Container fluid>
                     <Row>
                         <Col xs={2} id="sidebar-wrapper">      
-                            <SidebarCompany show={this.show}/>
+                            <SidebarCompany show={this.show} pending={this.state.pendingRequests}/>
                         </Col>
                         <Col xs={10} id="page-content-wrapper">
                             { this.state.render }
