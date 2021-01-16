@@ -16,7 +16,7 @@ export default class EmployeeClockingView extends React.Component{
             month: new Date().getMonth()+1  
         }
 
-        fetch('http://localhost:8080/hr/viewClocking/' + payload.username + '/' + payload.year + '/' + payload.month, {
+        fetch('http://localhost:8080/hr/viewClocking/' + payload.username , {
             method: 'GET',
             headers: {
                 'Accept' : 'application/json',
@@ -39,7 +39,8 @@ export default class EmployeeClockingView extends React.Component{
     }
 
     renderPontaj = (pontaj) => {
-        const {year, month, workedHours, requiredHours, overtimeHours, overtimeLeave } = pontaj;
+        const {year, month, workedHours, requiredHours, overtimeHours, overtimeLeave } = pontaj ;
+        console.log(pontaj);
         return(
             <table className="table table-condensed table-responsive table-inverse table-light table-hovered align-self-center" style={{width: "auto", height:"auto"}}>
                 <thead>

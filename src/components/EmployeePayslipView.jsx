@@ -11,12 +11,11 @@ export default class EmployeePayslipView extends React.Component{
         this.renderSalary = this.renderSalary.bind(this);
         
         const payload = {
-            username: localStorage.getItem('username'),
-            year: new Date().getFullYear(),
-            month: new Date().getMonth()+1  
+            username: localStorage.getItem('username')
+         
         }
 
-        fetch('http://localhost:8080/hr/viewPayslip/' + payload.username + '/' + payload.year + '/' + payload.month, {
+        fetch('http://localhost:8080/hr/viewPayslip/' + payload.username , {
             method: 'GET',
             headers: {
                 'Accept' : 'application/json',
@@ -38,9 +37,10 @@ export default class EmployeePayslipView extends React.Component{
             })
     }
 
-    renderSalary = (salary) => {
-        var {year, month, brutSalary, netSalary, workedHours, requiredHours} = salary;
 
+    renderSalary = (salary) => {
+       console.log(this.state.salary);
+       var {year, month, brutSalary, netSalary, workedHours, requiredHours} = salary;
         return(
             
             <table className="table table-condensed table-responsive table-inverse table-light table-hovered align-self-center" style={{width: "auto", height:"auto"}}>
@@ -83,11 +83,8 @@ export default class EmployeePayslipView extends React.Component{
 
     render(){
         return (
-            
-        <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
-            
+        <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">  
             {this.renderSalary(this.state.salary)}
-            
         </div>
     
         );
