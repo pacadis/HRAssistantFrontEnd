@@ -9,6 +9,7 @@ import NotFound from './components/NotFound';
 import CompanyDashboard from './components/CompanyDashboard';
 import EmployeeDashboard from "./components/EmployeeDashboard";
 import ContactForm from "./components/ContactForm";
+import EditEmployee from "./components/EditEmployee";
 
 
 class App extends Component{
@@ -21,6 +22,7 @@ class App extends Component{
                 <Route path="/register" component={RegisterForm}/>
                 <Route path="/contact" component={ContactForm}/>
 
+                <Route path="/companydashboard/employee/:id" component={EditEmployee}/>
                 <Route path="/companydashboard" component={CompanyDashboard}/>
                 <Route path="/employeedashboard" component={EmployeeDashboard}/>
 

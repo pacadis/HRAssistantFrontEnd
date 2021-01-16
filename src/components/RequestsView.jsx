@@ -3,8 +3,8 @@ import {Table} from "react-bootstrap";
 
 export default class RequestsView extends React.Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             requests: []
         };
@@ -64,11 +64,13 @@ export default class RequestsView extends React.Component{
     acceptRequest(id) {
         this.manageRequest(id, "ACCEPT")
         this.populateRequests();
+        localStorage.setItem('pendingRequests', localStorage.getItem('pendingRequests') - 1)
     }
 
     denyRequest(id) {
         this.manageRequest(id, "DECLINE")
         this.populateRequests();
+        localStorage.setItem('pendingRequests', localStorage.getItem('pendingRequests') - 1)
     }
 
     renderRequests = (request) => {

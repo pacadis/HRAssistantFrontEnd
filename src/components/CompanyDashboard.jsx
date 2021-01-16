@@ -63,6 +63,7 @@ class CompanyDashboard extends React.Component {
     render(){
         document.body.classList = "";
         document.body.classList.add("background-dashboard");
+        console.log("RENDER")
 
         return (
 

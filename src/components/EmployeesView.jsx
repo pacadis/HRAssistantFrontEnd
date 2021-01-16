@@ -2,8 +2,9 @@ import React from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faTrashAlt} from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/Button";
+import { withRouter } from "react-router";
 
-export default class EmployeesView extends React.Component{
+class EmployeesList extends React.Component{
 
     constructor(){
         super();
@@ -72,7 +73,7 @@ export default class EmployeesView extends React.Component{
                     <small className="text-muted">Username: {username}</small>
                 </div>
                 <div className="card-footer">
-                    <Button className="btn btn-warning ml-4">
+                    <Button className="btn btn-warning ml-4" onClick={() => this.props.history.push('/companydashboard/employee/' + username)}>
                         <FontAwesomeIcon icon={faEdit}/>
                     </Button>
                     <Button onClick={() => {
@@ -93,3 +94,6 @@ export default class EmployeesView extends React.Component{
         );
     }
 }
+
+const EmployeesView = withRouter(EmployeesList)
+export default EmployeesView
