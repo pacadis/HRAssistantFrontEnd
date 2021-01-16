@@ -81,20 +81,20 @@ class LoginForm extends React.Component {
             <NavBar/>
             <div className="d-flex justify-content-center align-items-center" style={{height:"100vh", marginTop:"100px"}}>
                 <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>
-                    <h2 className="align-self-center">Login</h2>
+                    <h2 className="align-self-center">Conectare</h2>
                     <hr/>
                     <Form.Group controlId="formUser">
-                        <Form.Label className="labels">Username</Form.Label>
-                        <Form.Control className="align-self-center" name="username" type="text" placeholder="Username" onChange={this.handleChange}>
+                        <Form.Label className="labels">Nume utilizator</Form.Label>
+                        <Form.Control className="align-self-center" name="username" type="text" placeholder="Nume utilizator" onChange={this.handleChange}>
                         </Form.Control>
                     </Form.Group>
 
                     <Form.Group controlId="formPassword">
-                        <Form.Label className="labels">Password</Form.Label>
-                        <Form.Control className="align-self-center" name="password" type="password" placeholder="Password" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Parola</Form.Label>
+                        <Form.Control className="align-self-center" name="password" type="password" placeholder="Parola" onChange={this.handleChange}/>
                     </Form.Group>
                     <Button className="align-self-center mybtn" onClick={this.doSubmit}>
-                        SUBMIT
+                        TRIMITE
                     </Button>
                 </Form>
             </div>

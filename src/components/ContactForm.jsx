@@ -54,25 +54,25 @@ export default class ContactForm extends React.Component{
                 <NavBar/>
                 <div className="d-flex justify-content-center align-items-center" style={{height:"100vh", marginTop:"100px"}}>
                     <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>
-                        <h2 className="align-self-center">Contact us</h2>
+                        <h2 className="align-self-center">Contacteaza-ne</h2>
                         <hr/>
                         <Form.Group controlId="formName">
-                            <Form.Label className="labels">Name</Form.Label>
-                            <Form.Control className="align-self-center" name="name" type="text" placeholder="Name" onChange={this.handleChange}/>
+                            <Form.Label className="labels">Nume</Form.Label>
+                            <Form.Control className="align-self-center" name="name" type="text" placeholder="Nume" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formEmail">
-                            <Form.Label className="labels">Email</Form.Label>
+                            <Form.Label className="labels">E-mail</Form.Label>
                             <Form.Control className="align-self-center" name="email" type="mail" placeholder="E-mail" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formMessage">
-                            <Form.Label className="labels">Message</Form.Label>
-                            <Form.Control className="align-self-center" as="textarea" rows={5} name="message" type="text" placeholder="Message" onChange={this.handleChange}/>
+                            <Form.Label className="labels">Mesaj</Form.Label>
+                            <Form.Control className="align-self-center" as="textarea" rows={5} name="message" type="text" placeholder="Mesaj" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Button className="align-self-center mybtn" onClick={this.doSubmit}>
-                            SUBMIT
+                            TRIMITE
                         </Button>
                     </Form>
                 </div>

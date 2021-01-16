@@ -96,35 +96,35 @@ class RegisterForm extends React.Component {
             <NavBar/>
             <div className="d-flex justify-content-center align-items-center" style={{height:"123vh", marginTop:"210px"}}>
                 <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%"}}>
-                    <h2 className="align-self-center" style={{textAlign:"center"}}>Register your company</h2>
-                    <h1 className="align-self-center">SIGN UP</h1>
+                    <h2 className="align-self-center" style={{textAlign:"center"}}></h2>
+                    <h1 className="align-self-center">Inregistrare</h1>
                     <hr />
                         <Form.Group controlId="formCompanyName">
-                        <Form.Label className="labels">Company name</Form.Label>
-                        <Form.Control name="name" className="align-self-center" type="text" placeholder="Company name" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Nume companie</Form.Label>
+                        <Form.Control name="name" className="align-self-center" type="text" placeholder="Nume companie" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formAddress">
-                        <Form.Label className="labels">Address</Form.Label>
-                        <Form.Control name="address" className="align-self-center" type="text" placeholder="Address" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Adresa</Form.Label>
+                        <Form.Control name="address" className="align-self-center" type="text" placeholder="Adresa" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formUser">
-                        <Form.Label className="labels">Username</Form.Label>
-                        <Form.Control name="username" className="align-self-center" type="text" placeholder="Username" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Nume utilizator</Form.Label>
+                        <Form.Control name="username" className="align-self-center" type="text" placeholder="Nume utilizator" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formPassword">
-                        <Form.Label className="labels">Password</Form.Label>
-                        <Form.Control name="password" className="align-self-center" type="password" placeholder="Password" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Parola</Form.Label>
+                        <Form.Control name="password" className="align-self-center" type="password" placeholder="Parola" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formConfirmPassword">
-                        <Form.Label className="labels">Confirm password</Form.Label>
-                        <Form.Control className="align-self-center" type="password" placeholder="Confirm password" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Confirmare parola</Form.Label>
+                        <Form.Control className="align-self-center" type="password" placeholder="Confirmare parola" onChange={this.handleChange}/>
                         </Form.Group>
                         <Button className="align-self-center mybtn" onClick={this.doSubmit}>
-                            SUBMIT
+                            TRIMITE
                         </Button>
                 </Form>
             </div>

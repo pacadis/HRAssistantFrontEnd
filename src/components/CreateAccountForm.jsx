@@ -97,18 +97,18 @@ class CreateAccountForm extends React.Component {
 
     render() {
         return (
-            <div className="d-flex justify-content-center align-items-center" style={{height:"115vh", marginTop:"100px"}}>
-                <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%", marginTop:"100px"}}>
-                    <h2 className="align-self-center">Create employee account</h2>
+            <div className="d-flex justify-content-center align-items-center" style={{height:"115vh", marginTop:"70px"}}>
+                <Form className="d-flex flex-column borderedform border rounded border-secondary custom-container" style={{width:"40%", marginTop:"80px"}}>
+                    <h2 className="align-self-center">Creeaza cont angajat</h2>
                     <hr />
                         <Form.Group controlId="formFirstName">
-                        <Form.Label className="labels">First name</Form.Label>
-                        <Form.Control name="firstName" className="align-self-center" type="text" placeholder="First name" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Prenume</Form.Label>
+                        <Form.Control name="firstName" className="align-self-center" type="text" placeholder="Prenume" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formLastName">
-                        <Form.Label className="labels">Last name</Form.Label>
-                        <Form.Control name="lastName" className="align-self-center" type="text" placeholder="Last name" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Nume</Form.Label>
+                        <Form.Control name="lastName" className="align-self-center" type="text" placeholder="Nume" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="cnp">
@@ -117,13 +117,13 @@ class CreateAccountForm extends React.Component {
                         </Form.Group>
 
                         <Form.Group controlId="formUser">
-                        <Form.Label className="labels">Username</Form.Label>
-                        <Form.Control name="username" className="align-self-center" type="text" placeholder="Username" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Nume utilizator</Form.Label>
+                        <Form.Control name="username" className="align-self-center" type="text" placeholder="Nume utilizator" onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="formPassword">
-                        <Form.Label className="labels">Password</Form.Label>
-                        <Form.Control name="password" className="align-self-center" type="password" placeholder="Password" onChange={this.handleChange}/>
+                        <Form.Label className="labels">Parola</Form.Label>
+                        <Form.Control name="password" className="align-self-center" type="password" placeholder="Parola" onChange={this.handleChange}/>
                         </Form.Group>
                         <Button className="align-self-center mybtn" onClick={this.doSubmit}>
                             SUBMIT

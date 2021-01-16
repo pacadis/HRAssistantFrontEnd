@@ -32,9 +32,9 @@ class BootstrapNavbar extends React.Component{
                 <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                    <Nav.Link href="/" className="mybtnnavbar">Home</Nav.Link>
-                    <Nav.Link href="/register" className="mybtnnavbar">Register</Nav.Link>
-                     <Nav.Link href="/login" className="mybtnnavbar">Login</Nav.Link>
+                    <Nav.Link href="/" className="mybtnnavbar">Acasa</Nav.Link>
+                    <Nav.Link href="/register" className="mybtnnavbar">Inregistrare</Nav.Link>
+                     <Nav.Link href="/login" className="mybtnnavbar">Conectare</Nav.Link>
                      <Nav.Link href="/contact" className="mybtnnavbar">Contact</Nav.Link>
                      </Nav>
                  </Navbar.Collapse>
