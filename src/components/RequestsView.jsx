@@ -1,21 +1,21 @@
 import React from "react";
 import {Table} from "react-bootstrap";
 
-export default class ContractsView extends React.Component{
+export default class RequestsView extends React.Component{
 
     constructor(){
         super();
         this.state = {
-            contracts: []
+            requests: []
         };
 
-        this.renderContracts = this.renderContracts.bind(this);
+        this.renderRequests = this.renderRequests.bind(this);
 
         const payload = {
             username: localStorage.getItem('username')
         }
 
-        fetch('http://localhost:8080/hr/viewContracts/' + payload.username, {
+        fetch('http://localhost:8080/hr/requests/' + payload.username, {
             method: 'GET',
             headers: {
                 'Accept' : 'application/json',
@@ -36,19 +36,18 @@ export default class ContractsView extends React.Component{
             })
     }
 
-    renderContracts = (contract) => {
-        const { firstName, lastName, grossSalary, hireDate, type, duration, expirationDate, cnp} = contract;
+    renderRequests = (request) => {
+        const { firstNameEmployee, lastNameEmployee, description, requestStatus, date } = request;
         return(
-                <tr>
-                    <td>{firstName}</td>
-                    <td>{lastName}</td>
-                    <td>{grossSalary}</td>
-                    <td>{hireDate}</td>
-                    <td>{type}</td>
-                    <td>{duration}</td>
-                    <td>{expirationDate}</td>
-                    <td>{cnp}</td>
-                </tr>
+            <tr>
+                <td>{firstNameEmployee}</td>
+                <td>{lastNameEmployee}</td>
+                <td>{description}</td>
+                <td>{requestStatus}</td>
+                <td>{date}</td>
+                <td><button class="btn btn-success">ACCEPTA</button></td>
+                <td><button class="btn btn-danger">REFUZA</button></td>
+            </tr>
         )
     }
 
@@ -60,20 +59,18 @@ export default class ContractsView extends React.Component{
                     <tr>
                         <th>Prenume</th>
                         <th>Nume</th>
-                        <th>Salariu brut</th>
-                        <th>Data angajarii</th>
-                        <th>Tip</th>
-                        <th>Durata</th>
-                        <th>Data expirarii</th>
-                        <th>CNP</th>
+                        <th>Descriere</th>
+                        <th>Status</th>
+                        <th>Data</th>
+                        <th><button class="btn btn-success">ACCEPTA</button></th>
+                        <th><button class="btn btn-danger">REFUZA</button></th>
                     </tr>
                     </thead>
                     <tbody>
-                    {this.state.contracts.map(contract => this.renderContracts(contract))}
+                        {this.state.requests.map(request => this.renderRequests(request))}
                     </tbody>
                 </Table>
             </div>
         );
     }
 }
-
