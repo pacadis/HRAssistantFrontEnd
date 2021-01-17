@@ -146,8 +146,8 @@ export default class EditEmployee extends React.Component{
                         </Form.Group>
 
                         <Form.Group controlId="formPassword">
-                        <Form.Label className="labels">Password</Form.Label>
-                        <Form.Control name="password" className="align-self-center" type="password" placeholder="Parola" value={this.state.password} onChange={this.handleChange}/>
+                        <Form.Label className="labels">Parola</Form.Label>
+                        <Form.Control name="password" className="align-self-center" type="text" placeholder="Parola" value={this.state.password} onChange={this.handleChange}/>
                         </Form.Group>
 
                         <Form.Group controlId="cnp">

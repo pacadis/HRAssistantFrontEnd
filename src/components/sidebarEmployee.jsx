@@ -7,7 +7,7 @@ import sigla from "../img/sigla.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faSignOutAlt,
-    faIdCard, faFileInvoiceDollar, faPlaneDeparture, faUserClock, faFolderPlus
+    faIdCard, faFileInvoiceDollar, faPlaneDeparture, faUserClock, faFolderPlus, faHistory
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -58,6 +58,11 @@ export default class SidebarEmployee extends React.Component {
                 <Item bgColor='black' onClick={() => this.props.show("inregistrare_cerere")}>
                     <FontAwesomeIcon icon={faFolderPlus} style={{marginRight: "1rem"}}/>
                     Înregistrare cerere
+                </Item>
+
+                <Item bgColor='black' onClick={() => this.props.show("istoric_cereri")}>
+                    <FontAwesomeIcon icon={faHistory} style={{marginRight: "1rem"}}/>
+                    Istoric cereri
                 </Item>
 
                 <div className="button-logout">

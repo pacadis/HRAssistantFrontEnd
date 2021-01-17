@@ -4,8 +4,8 @@ import { withRouter } from "react-router";
 import SidebarCompany from "./sidebarCompany.jsx";
 import CreateAccountForm from "./CreateAccountForm"
 import EmployeesView from "./EmployeesView"
-import ContractsView from "./ContractsView";
 import RequestsView from "./RequestsView";
+import DefaultCompanyDashboard from "./DefaultCompanyDashboard"
 
 class CompanyDashboard extends React.Component {
     
@@ -13,7 +13,7 @@ class CompanyDashboard extends React.Component {
         super();
         this.show = this.show.bind(this);
         this.getPendingRequests = this.getPendingRequests.bind(this)
-        this.state = {render: null, pendingRequests: this.getPendingRequests()}
+        this.state = {render: <DefaultCompanyDashboard/>, pendingRequests: this.getPendingRequests()}
     }
 
     getPendingRequests() {
@@ -50,7 +50,7 @@ class CompanyDashboard extends React.Component {
             case "gestionare_angajati": this.setState({render: <EmployeesView/>}); break;
             case "vizualizare_cereri": this.setState({render: <RequestsView/>}); break;
             case "logout": this.logout(); break;
-            default: this.setState({render: null})
+            default: this.setState({render: <DefaultCompanyDashboard/>})
         }
     }
 

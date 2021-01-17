@@ -7,6 +7,8 @@ import EmployeeClockingView from "./EmployeeClockingView";
 import EmployeePayslipView from "./EmployeePayslipView";
 import EmployeeHolidayView from "./EmployeeHolidayView";
 import EmployeeCreateRequestView from "./EmployeeCreateRequestView";
+import DefaultEmployeeDashboard from "./DefaultEmployeeDashboard";
+import EmployeeRequestsView from "./EmployeeRequestsView";
 
 
 class EmployeeDashboard extends React.Component {
@@ -14,7 +16,7 @@ class EmployeeDashboard extends React.Component {
     constructor(props){
         super(props);
         this.show = this.show.bind(this);
-        this.state = {render: null}
+        this.state = {render: <DefaultEmployeeDashboard/>}
     }
 
     show(type){
@@ -24,8 +26,9 @@ class EmployeeDashboard extends React.Component {
             case "fluturas_salariu": this.setState({render: <EmployeePayslipView />}); break;
             case "vizualizare_concedii" : this.setState({render: <EmployeeHolidayView />}); break;
             case "inregistrare_cerere" : this.setState({render: <EmployeeCreateRequestView/>}); break;
+            case "istoric_cereri" : this.setState({render: <EmployeeRequestsView/>}); break;
             case "logout": this.logout(); break;
-            default: this.setState({render: null})
+            default: this.setState({render: <DefaultEmployeeDashboard/>})
         }
     }
 

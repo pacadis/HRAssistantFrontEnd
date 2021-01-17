@@ -5,7 +5,8 @@ export default class EmployeeHolidayView extends React.Component{
     constructor(){
         super();
         this.state = {
-            holiday: []
+            holiday: [],
+            holidayShown: []
         };
 
         this.renderHoliday = this.renderHoliday.bind(this);
@@ -25,7 +26,7 @@ export default class EmployeeHolidayView extends React.Component{
             .then(res => {
                 if (res.status === 200) {
                     res.json().then(json =>{
-                        this.setState({holiday: json});
+                        this.setState({holiday: json, holidayShown: json});
                     });
                     console.log(payload.username)
                     // LOGIN PERSISTANCE
@@ -38,7 +39,6 @@ export default class EmployeeHolidayView extends React.Component{
     }
 
     renderHoliday = (holiday) => {
-        console.log(holiday);
         var { type, fromDate, toDate, proxyName} = holiday;
         return(
             <table className="table table-condensed table-responsive table-inverse table-light table-hovered align-self-center" style={{width: "auto", height:"auto"}}>
@@ -71,10 +71,27 @@ export default class EmployeeHolidayView extends React.Component{
         )
     }
 
+    handleChange = (event) => {
+        
+        const filterCriteria = event.target.value
+        let allHolidays = [];
+        for(var i = 0; i < this.state.holiday.length; i ++)
+            if(this.state.holiday[i].proxyName.toDate())
+                allHolidays.push(this.state.holiday[i])
+        this.setState({holidayShown: allHolidays})
+
+    }
+
     render(){
         return (
             <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
-                {this.renderHoliday(this.state.holiday)}
+                
+                <input type="text" onChange={this.handleChange} placeholder="Tip" />
+                
+                {this.state.holidayShown.map(holiday => {
+                    return <div> {this.renderHoliday(holiday)} <br></br> </div>
+                })}
+
             </div>
         );
     }

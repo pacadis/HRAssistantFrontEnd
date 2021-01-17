@@ -11,6 +11,9 @@ import EmployeeDashboard from "./components/EmployeeDashboard";
 import ContactForm from "./components/ContactForm";
 import EditEmployee from "./components/EditEmployee";
 
+import PrivateCompanyRoute from "./components/PrivateCompanyRoute";
+import PrivateEmployeeRoute from "./components/PrivateEmployeeRoute";
+
 
 class App extends Component{
     render() {
@@ -22,9 +25,9 @@ class App extends Component{
                 <Route path="/register" component={RegisterForm}/>
                 <Route path="/contact" component={ContactForm}/>
 
-                <Route path="/companydashboard/employee/:id" component={EditEmployee}/>
-                <Route path="/companydashboard" component={CompanyDashboard}/>
-                <Route path="/employeedashboard" component={EmployeeDashboard}/>
+                <PrivateCompanyRoute path="/companydashboard/employee/:id" component={EditEmployee}/>
+                <PrivateCompanyRoute path="/companydashboard" component={CompanyDashboard}/>
+                <PrivateEmployeeRoute path="/employeedashboard" component={EmployeeDashboard}/>
 
                 <Route path="/not-found" component={NotFound} />
                 <Route path="/" exact component={HomePage} />
