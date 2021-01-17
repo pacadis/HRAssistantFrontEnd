@@ -2,7 +2,7 @@ import React from "react";
 import {Container, Row, Col} from "react-bootstrap";
 import { withRouter } from "react-router";
 import SidebarCompany from "./sidebarCompany.jsx";
-import CreateAccountForm from "./CreateAccountForm"
+import CreateAccountForm from "../presentation/CreateAccountForm"
 import EmployeesView from "./EmployeesView"
 import RequestsView from "./RequestsView";
 import DefaultCompanyDashboard from "./DefaultCompanyDashboard"

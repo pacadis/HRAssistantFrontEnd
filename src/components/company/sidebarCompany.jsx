@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Sidebar, Item, Logo, LogoText} from 'react-sidebar-ui'
 import 'react-sidebar-ui/dist/index.css';
-import sigla from "../img/sigla.png";
+import sigla from "../../img/sigla.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faAddressCard,
@@ -34,8 +34,8 @@ class SidebarCompany extends React.Component {
 
             <div onClick={this.redirect} style={{cursor: "pointer"}}>
                 <Logo
-                image={sigla}
-                imageName='react logo'/>
+                    image={sigla}
+                    imageName='react logo'/>
             </div>
 
             <LogoText>{localStorage.getItem('name')}</LogoText>

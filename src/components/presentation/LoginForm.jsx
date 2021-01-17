@@ -2,7 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Joi from 'joi-browser'
-import NavBar from './navbar';
+import NavBar from '../utils/navbar';
 
 class LoginForm extends React.Component {
 

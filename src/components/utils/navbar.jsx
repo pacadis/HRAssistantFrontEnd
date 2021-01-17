@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React from 'react'
 import { Navbar,Nav } from 'react-bootstrap'
-import sigla from "../img/sigla.png";
+import sigla from "../../img/sigla.png";
 import authentication from "./auth"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {

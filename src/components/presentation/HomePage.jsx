@@ -1,6 +1,6 @@
 import React from "react";
-import NavBar from './navbar';
-import photo from '../img/homePagePhoto.jpg'
+import NavBar from '../utils/navbar';
+import photo from '../../img/homePagePhoto.jpg'
 
 class HomePage extends React.Component{
   render() {

@@ -1,5 +1,5 @@
 import React from "react"
-import photo from "../img/employeeDefaultPhoto.jpg"
+import photo from "../../img/employeeDefaultPhoto.jpg"
 
 export default class DefaultEmployeeDashboard extends React.Component{
 

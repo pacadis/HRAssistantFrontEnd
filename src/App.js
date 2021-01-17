@@ -1,18 +1,18 @@
 import './App.css';
 import React, {Component} from "react";
 import { Route, Switch, Redirect } from 'react-router-dom';
-import LoginForm from "./components/LoginForm";
-import HomePage from './components/HomePage';
-import RegisterForm from './components/RegisterForm';
-import NotFound from './components/NotFound';
+import LoginForm from "./components/presentation/LoginForm";
+import HomePage from './components/presentation/HomePage';
+import RegisterForm from './components/presentation/RegisterForm';
+import NotFound from './components/utils/NotFound';
 
-import CompanyDashboard from './components/CompanyDashboard';
-import EmployeeDashboard from "./components/EmployeeDashboard";
-import ContactForm from "./components/ContactForm";
-import EditEmployee from "./components/EditEmployee";
+import CompanyDashboard from './components/company/CompanyDashboard';
+import EmployeeDashboard from "./components/employee/EmployeeDashboard";
+import ContactForm from "./components/presentation/ContactForm";
+import EditEmployee from "./components/company/EditEmployee";
 
-import PrivateCompanyRoute from "./components/PrivateCompanyRoute";
-import PrivateEmployeeRoute from "./components/PrivateEmployeeRoute";
+import PrivateCompanyRoute from "./components/utils/PrivateCompanyRoute";
+import PrivateEmployeeRoute from "./components/utils/PrivateEmployeeRoute";
 
 
 class App extends Component{
