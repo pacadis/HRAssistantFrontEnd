@@ -24,7 +24,7 @@ class HomePage extends React.Component{
             <a href="/register" className="btn btn-primary">Crează-ți un cont acum!</a>
           </div>
           <div className="card-footer text-muted">
-            Pentru sugestii și probleme, <a href="/register" className="btn btn-primary">contactează-ne</a>
+            Pentru sugestii și probleme, <a href="/contact" className="btn btn-primary">contactează-ne</a>
           </div>
         </div>
 

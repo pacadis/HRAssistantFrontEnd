@@ -41,7 +41,7 @@ export default class ExmployeeCreateRequestView extends React.Component{
         })
             .then(res => {
                 if (res.status === 200) {
-                    alert("Cererea s-a inregistrat cu succes!")
+                    alert("Cererea s-a inregistrat cu succes!");
                     this.state = {
                         description: "",
                         requestStatus: "PENDING",
@@ -125,7 +125,7 @@ export default class ExmployeeCreateRequestView extends React.Component{
                             <Form.Control className="align-self-center" name="proxyName" type="text" placeholder="Nume inlocuitor" onChange={this.handleChange}/>
                         </Form.Group>
 
-                        <Button className="align-self-center mybtn" onClick={this.doSubmit}>
+                        <Button href="/employeedashboard" className="align-self-center mybtn" onClick={this.doSubmit}>
                             Depune cerere
                         </Button>
                     </Form>

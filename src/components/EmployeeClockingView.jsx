@@ -5,15 +5,16 @@ export default class EmployeeClockingView extends React.Component{
     constructor(){
         super();
         this.state = {
-            pontaj: []
+            pontaj: [],
+            pontajShown: [], 
+            pontajeFinale: []
         };
 
         this.renderPontaj = this.renderPontaj.bind(this);
 
         const payload = {
             username: localStorage.getItem('username'),
-            year: new Date().getFullYear(),
-            month: new Date().getMonth()+1  
+            
         }
 
         fetch('http://localhost:8080/hr/viewClocking/' + payload.username , {
@@ -26,7 +27,7 @@ export default class EmployeeClockingView extends React.Component{
             .then(res => {
                 if (res.status === 200) {
                     res.json().then(json =>{
-                        this.setState({pontaj: json});
+                        this.setState({pontaj: json, pontajShown: json});
                     });
                     console.log(payload.username)
                     // LOGIN PERSISTANCE
@@ -80,10 +81,38 @@ export default class EmployeeClockingView extends React.Component{
         )
     }
 
+    handleChange = (event) => {
+        
+        const filterCriteria = event.target.value
+        let allPontaj = [];
+        for(var i = 0; i < this.state.pontaj.length; i ++){
+            if(this.state.pontaj[i].year.startsWith(filterCriteria))
+            allPontaj.push(this.state.pontaj[i])
+        }
+        this.setState({pontajShown: allPontaj})
+
+    }
+
+    handleChangeMonth = (event) => {
+        
+        const filterCriteria = event.target.value
+        let allPontaj = [];
+        for(var i = 0; i < this.state.pontajShown.length; i ++){
+            if(this.state.pontajShown[i].month.startsWith(filterCriteria))
+            allPontaj.push(this.state.pontajShown[i])
+        }
+        this.setState({pontajeFinale: allPontaj})
+
+    }
+
     render(){
         return (
             <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
-                {this.renderPontaj(this.state.pontaj)}
+                 <input type="text" onChange={this.handleChange} placeholder="An" />
+                 <input type="text" onChange={this.handleChangeMonth} placeholder="Luna" />
+                 {this.state.pontajeFinale.map(pontaj => {
+                    return <div> {this.renderPontaj(pontaj)} <br></br> </div>
+                })}
             </div>
         );
     }

@@ -4,7 +4,9 @@ export default class EmployeePayslipView extends React.Component{
     constructor(){
         super();
         this.state = {
-            salary: []
+            salary: [],
+            salaryShown: [],
+            finalSalary: []
         };
 
         this.renderSalary = this.renderSalary.bind(this);
@@ -24,7 +26,7 @@ export default class EmployeePayslipView extends React.Component{
             .then(res => {
                 if (res.status === 200) {
                     res.json().then(json =>{
-                        this.setState({salary: json});
+                        this.setState({salary: json, salaryShown: json});
                     });
                     console.log(payload.username)
                     // LOGIN PERSISTANCE
@@ -80,11 +82,39 @@ export default class EmployeePayslipView extends React.Component{
         )
     }
 
+    handleChange = (event) => {
+        
+        const filterCriteria = event.target.value
+        let allSalary = [];
+        for(var i = 0; i < this.state.salary.length; i ++){
+            if(this.state.salary[i].year.startsWith(filterCriteria))
+            allSalary.push(this.state.salary[i])
+        }
+        this.setState({salaryShown: allSalary})
+
+    }
+
+    handleChangeMonth = (event) => {
+        
+        const filterCriteria = event.target.value
+        let allSalary = [];
+        for(var i = 0; i < this.state.salaryShown.length; i ++){
+            if(this.state.salaryShown[i].month.startsWith(filterCriteria))
+            allSalary.push(this.state.salaryShown[i])
+        }
+        this.setState({finalSalary: allSalary})
+
+    }
+
     render(){
         return (
-        <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">  
-            {this.renderSalary(this.state.salary)}
-        </div>
+            <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
+            <input type="text" onChange={this.handleChange} placeholder="An" />
+            <input type="text" onChange={this.handleChangeMonth} placeholder="Luna" />
+            {this.state.finalSalary.map(salary => {
+               return <div> {this.renderSalary(salary)} <br></br> </div>
+           })}
+       </div>
     
         );
     }

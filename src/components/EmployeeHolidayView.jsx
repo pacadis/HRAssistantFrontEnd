@@ -26,7 +26,7 @@ export default class EmployeeHolidayView extends React.Component{
             .then(res => {
                 if (res.status === 200) {
                     res.json().then(json =>{
-                        this.setState({holiday: json, holidayShown: json});
+                        this.setState({holiday: json});
                     });
                     console.log(payload.username)
                     // LOGIN PERSISTANCE
@@ -75,9 +75,11 @@ export default class EmployeeHolidayView extends React.Component{
         
         const filterCriteria = event.target.value
         let allHolidays = [];
-        for(var i = 0; i < this.state.holiday.length; i ++)
-            if(this.state.holiday[i].proxyName.toDate())
+        for(var i = 0; i < this.state.holiday.length; i ++){
+            console.log(this.state.holiday[i].fromDate);
+            if(this.state.holiday[i].fromDate.startsWith(filterCriteria))
                 allHolidays.push(this.state.holiday[i])
+        }
         this.setState({holidayShown: allHolidays})
 
     }
@@ -86,7 +88,7 @@ export default class EmployeeHolidayView extends React.Component{
         return (
             <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
                 
-                <input type="text" onChange={this.handleChange} placeholder="Tip" />
+                <input type="text" onChange={this.handleChange} placeholder="An" />
                 
                 {this.state.holidayShown.map(holiday => {
                     return <div> {this.renderHoliday(holiday)} <br></br> </div>
