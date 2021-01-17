@@ -77,7 +77,7 @@ export default class RequestsView extends React.Component{
         const { id, firstNameEmployee, lastNameEmployee, description, requestStatus, date } = request;
         const statusCol = () => {
             if(requestStatus === "PENDING")
-                return <td style={{backgroundColor: "red"}}>{requestStatus}</td>
+                return <td style={{backgroundColor: "#ffefa0", borderRadius: "10%"}}>{requestStatus}</td>
             return <td>{requestStatus}</td>
         }
         return(
@@ -97,14 +97,15 @@ export default class RequestsView extends React.Component{
         console.log("render")
         return (
             <div className="card-deck">
-                <Table striped bordered hover variant="light" size="sm">
-                    <thead>
-                    <tr>
+                <Table striped bordered hover variant="light" size="sm" className="mr-5 mt-3">
+                    <thead className="text-center text-white" style={{backgroundColor: "#1c1e2a"}}>
+                    <tr style={{backgroundColor: "#1c1e2a"}}>
                         <th>Prenume</th>
                         <th>Nume</th>
                         <th>Descriere</th>
                         <th>Status</th>
                         <th>Data</th>
+                        <th colSpan="2">Actiune</th>
                     </tr>
                     </thead>
                     <tbody>

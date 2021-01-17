@@ -44,7 +44,7 @@ export default class EmployeePayslipView extends React.Component{
        var {year, month, brutSalary, netSalary, workedHours, requiredHours} = salary;
         return(
             
-            <table className="table table-condensed table-responsive table-inverse table-light table-hovered align-self-center" style={{width: "auto", height:"auto"}}>
+            <table className="table table-condensed table-responsive table-inverse table-light table-hovered align-self-center mr-5" style={{width: "300px", height:"344px"}}>
                 <thead>
                 <tr>
                     <th scope="col" colSpan="2" className="text-center text-white" style={{backgroundColor: "#1c1e2a", width: "300px"}} >Fluturas salariu:   </th>
@@ -108,13 +108,18 @@ export default class EmployeePayslipView extends React.Component{
 
     render(){
         return (
-            <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
-            <input type="text" onChange={this.handleChange} placeholder="An" />
-            <input type="text" onChange={this.handleChangeMonth} placeholder="Luna" />
-            {this.state.finalSalary.map(salary => {
-               return <div> {this.renderSalary(salary)} <br></br> </div>
-           })}
-       </div>
+            <div className="card-deck column justify-content-center d-block align-items-center align-middle mt-5 col-xs-10">
+                <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
+                    <input className="mr-5" type="text" onChange={this.handleChange} placeholder="An" />
+                    <input className="mr-5" type="text" onChange={this.handleChangeMonth} placeholder="Luna" />
+                </div>
+                <br></br>
+                <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
+                    {this.state.finalSalary.map(salary => {
+                    return <div> {this.renderSalary(salary)} <br></br> </div>
+                })}
+                </div>
+            </div>
     
         );
     }

@@ -61,8 +61,8 @@ export default class RequestsView extends React.Component{
         console.log("render")
         return (
             <div className="card-deck">
-                <Table striped bordered hover variant="light" size="sm">
-                    <thead>
+                <Table striped bordered hover variant="light" size="sm" className="mt-3 mr-5">
+                    <thead className="text-center text-white" style={{backgroundColor: "#1c1e2a"}}>
                     <tr>
                         <th>Prenume</th>
                         <th>Nume</th>

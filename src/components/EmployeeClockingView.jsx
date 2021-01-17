@@ -43,7 +43,7 @@ export default class EmployeeClockingView extends React.Component{
         const {year, month, workedHours, requiredHours, overtimeHours, overtimeLeave } = pontaj ;
         console.log(pontaj);
         return(
-            <table className="table table-condensed table-responsive table-inverse table-light table-hovered align-self-center" style={{width: "auto", height:"auto"}}>
+            <table className="table table-condensed table-responsive table-inverse table-light table-hovered align-self-center mr-5" style={{width: "auto", height:"auto"}}>
                 <thead>
                 <tr>
                     <th scope="col" colSpan="2" className="text-center text-white" style={{backgroundColor: "#1c1e2a", width: "300px"}}>Detalii pontaj:  </th>
@@ -107,12 +107,16 @@ export default class EmployeeClockingView extends React.Component{
 
     render(){
         return (
-            <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
-                 <input type="text" onChange={this.handleChange} placeholder="An" />
-                 <input type="text" onChange={this.handleChangeMonth} placeholder="Luna" />
-                 {this.state.pontajeFinale.map(pontaj => {
-                    return <div> {this.renderPontaj(pontaj)} <br></br> </div>
-                })}
+            <div className="card-deck column justify-content-center d-block align-items-center align-middle mt-5 col-auto">
+                <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
+                    <input type="text" onChange={this.handleChange} placeholder="An" className="mr-5"/>
+                    <input type="text" onChange={this.handleChangeMonth} placeholder="Luna" className="mr-5"/>
+                 </div>
+                <div className="card-deck row justify-content-center d-flex align-items-center align-middle mt-5 col-auto">
+                    {this.state.pontajeFinale.map(pontaj => {
+                        return <div> {this.renderPontaj(pontaj)} <br></br> </div>
+                    })}
+                </div>
             </div>
         );
     }

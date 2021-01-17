@@ -54,21 +54,6 @@ class EmployeeDashboard extends React.Component {
 
                 </Container>
             </div>
-
-            //varianta atanasov
-            // <div className="background-dashboard">
-            //     <div className="container">
-            //         <div className="row">
-            //             <div className="col-3"  >
-            //                 <SidebarEmployee show={this.show}/>
-            //             </div>
-            //             <div className="col"  >
-            //                 { this.state.render }
-            //             </div>
-            //         </div>
-
-            //     </div>
-            // </div>
         );
     }
 };

@@ -64,7 +64,7 @@ class EmployeesList extends React.Component{
     renderEmployee = (employee) => {
         const {firstName, lastName, username, id} = employee;
         return (
-            <div className="card mt-3" onClick={() => console.log(id)} style={{cursor: "pointer"}}>
+            <div className="card mt-3 col-md-6 col-lg-3 mr-5 mb-2" onClick={() => console.log(id)} style={{cursor: "pointer"}}>
                 <div className="card-body">
                     <h4 className="card-title">{lastName}</h4>
                     <h6 className="card-title">{firstName}</h6>
@@ -73,14 +73,16 @@ class EmployeesList extends React.Component{
                     <small className="text-muted">Username: {username}</small>
                 </div>
                 <div className="card-footer">
-                    <Button className="btn btn-warning ml-4" onClick={() => this.props.history.push('/companydashboard/employee/' + username)}>
-                        <FontAwesomeIcon icon={faEdit}/>
-                    </Button>
-                    <Button onClick={() => {
-                        this.handleDelete(username)
-                    }} className="btn btn-warning  ml-5">
-                        <FontAwesomeIcon icon={faTrashAlt}/>
-                    </Button>
+                    <div className="btn-group justify-content-center d-flex align-items-center align-middle">    
+                        <Button className="btn btn-warning btn-md center-block mr-3" onClick={() => this.props.history.push('/companydashboard/employee/' + username)}>
+                            <FontAwesomeIcon icon={faEdit}/>
+                        </Button>
+                        <Button onClick={() => {
+                            this.handleDelete(username)
+                        }} className="btn btn-warning btn-md center-block mr-3">
+                            <FontAwesomeIcon icon={faTrashAlt}/>
+                        </Button>
+                    </div>
                 </div>
             </div>
         )
@@ -88,8 +90,10 @@ class EmployeesList extends React.Component{
 
     render(){
         return (
-                <div className="card-deck">
-                    {this.state.employees.map(employee => this.renderEmployee(employee))}
+                <div className="container-fluid">
+                    <div className="row">
+                        {this.state.employees.map(employee => this.renderEmployee(employee))}
+                    </div>
                 </div>
         );
     }
