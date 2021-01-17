@@ -61,16 +61,22 @@ export default class RequestsView extends React.Component{
         return okResponse;
     }
 
+    refreshPage() {
+        window.location.reload(false);
+      }
+
     acceptRequest(id) {
         this.manageRequest(id, "ACCEPT")
         this.populateRequests();
         localStorage.setItem('pendingRequests', localStorage.getItem('pendingRequests') - 1)
+        this.refreshPage();
     }
 
     denyRequest(id) {
         this.manageRequest(id, "DECLINE")
         this.populateRequests();
         localStorage.setItem('pendingRequests', localStorage.getItem('pendingRequests') - 1)
+        this.refreshPage();
     }
 
     renderRequests = (request) => {
