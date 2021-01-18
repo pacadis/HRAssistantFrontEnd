@@ -14,7 +14,7 @@ class EmployeesList extends React.Component{
 
         this.renderEmployee = this.renderEmployee.bind(this);
 
-        fetch('http://localhost:8080/hr/employee', {
+        fetch('http://localhost:8080/hr/employeeOfCompany/' + localStorage.getItem("username"), {
             method: 'GET',
             headers: {
                 'Accept' : 'application/json',
